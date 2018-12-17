@@ -3,8 +3,9 @@
 	"version": "0.0.1",
 	"scripts": {
 		"deploy": "npm version patch && npm run deploy:all",
-		"deploy:all": "npm run deploy:daf-common",
+		"deploy:all": "npm run deploy:daf-common && npm run deploy:daf-ui",
 		"deploy:daf-common": "npm version patch --prefix projects/daf-common && ng build daf-common && npm publish ./dist/daf-common --access public",
+		"deploy:daf-ui": "npm version patch --prefix projects/daf-ui && ng build daf-ui && npm publish ./dist/daf-ui --access public",
 		"ng": "ng",
 		"start": "ng serve",
 		"build": "ng build",

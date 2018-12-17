@@ -37,6 +37,41 @@
           }
         }
       }
+    },
+    "daf-ui": {
+      "root": "projects/daf-ui",
+      "sourceRoot": "projects/daf-ui/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/daf-ui/tsconfig.lib.json",
+            "project": "projects/daf-ui/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/daf-ui/src/test.ts",
+            "tsConfig": "projects/daf-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/daf-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/daf-ui/tsconfig.lib.json",
+              "projects/daf-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "daf-common"

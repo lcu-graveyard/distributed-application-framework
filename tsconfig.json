@@ -24,6 +24,12 @@
       ],
       "daf-common/*": [
         "dist/daf-common/*"
+      ],
+      "daf-ui": [
+        "dist/daf-ui"
+      ],
+      "daf-ui/*": [
+        "dist/daf-ui/*"
       ]
     }
   }
