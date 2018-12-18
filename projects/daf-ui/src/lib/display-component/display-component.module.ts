@@ -16,5 +16,5 @@ import { DisplayComponentComponent } from './display-component.component';
 		DisplayComponentComponent,
 	]
 })
-export class GenericDomainModule { 
+export class DisplayComponentModule { 
 }

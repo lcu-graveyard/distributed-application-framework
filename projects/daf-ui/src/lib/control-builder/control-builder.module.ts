@@ -19,5 +19,5 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
 		ControlBuilderDialog,
 	]
 })
-export class GenericDomainModule { 
+export class ControlBuilderModule { 
 }
