@@ -12,6 +12,7 @@ import { ComponentSelectorDialog } from './component-selector.dialog';
 @NgModule({
 	imports: [
 		FathymSharedModule,
+		
 		ReactiveFormsModule,
 		MatButtonModule,
 		MatDialogModule,
