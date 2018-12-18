@@ -1,0 +1,40 @@
+<div class="page-element" [class.build]="State == 'Builder' || ForceHeader" [class.push-out]="State == 'Builder'" *ngIf="Element">
+	<mat-toolbar *ngIf="State == 'Builder' || ForceHeader">
+		<forge-page-element-heading [element]="Element" [context]="Context" [page-save]="PageSave" [show-main-menu-actions]="ShowMainMenuActions">
+			<ng-container ngProjectAs="lead-actions">
+				<ng-content select="lead-actions"></ng-content>
+			</ng-container>
+
+			<ng-container ngProjectAs="actions">
+				<ng-content select="actions"></ng-content>
+			</ng-container>
+
+			<ng-container ngProjectAs="main-menu-actions">
+				<button mat-menu-item (click)="RemovePageElement()" *ngIf="ShowDeleteAction">Delete</button>
+
+				<ng-content select="main-menu-actions"></ng-content>
+			</ng-container>
+
+			<ng-container ngProjectAs="trail-actions">
+				<ng-content select="trail-actions"></ng-content>
+			</ng-container>
+		</forge-page-element-heading>
+	</mat-toolbar>
+
+	<ng-container *ngIf="Element && Element.Control && !Element?.Control?.Details?.Hide">
+		<ng-container *ngIf="State != 'Render'">
+			<div [class.pull-in]="State == 'Builder'" [class.contents]="State != 'Builder'" class="{{Element.Rendering ? Element.Rendering.Lookup : ''}} {{Element.Control.Details.StyleClass ? Element.Control.Details.StyleClass : ''}}">
+				<display-component [element]="Element" [state]="BuilderState" [data]="Data"	[context]="Context"
+								   [dragOp]="DragOperation" (dragOp)="ChangeDragOperation($event)"></display-component>
+			</div>
+		</ng-container>
+
+		<ng-container *ngIf="State == 'Render'">
+			<ng-container *ngFor="let peSet of RenderElements">
+				<div class="contents {{peSet.Element.Rendering ? peSet.Element.Rendering.Lookup : ''}} {{peSet.Element.Control.Details.StyleClass ? peSet.Element.Control.Details.StyleClass : ''}}">
+					<display-component [element]="Element" [state]="BuilderState" [data]="Data" [context]="Context"></display-component>
+				</div>
+			</ng-container>
+		</ng-container>
+	</ng-container>
+</div>

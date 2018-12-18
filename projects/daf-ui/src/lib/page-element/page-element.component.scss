@@ -1,0 +1,27 @@
+:host {
+	.page-element {
+		cursor: auto;
+
+		&.build {
+			border: 1px dashed #808080;
+			display: block;
+
+			.push-out {
+				margin: 1rem;
+			}
+
+			.pull-in {
+				padding: 1rem;
+			}
+
+			.mat-toolbar {
+				padding: 0;
+				background-color: none;
+
+				&.mat-toolbar-single-row {
+					height: auto;
+				}
+			}
+		}
+	}
+}

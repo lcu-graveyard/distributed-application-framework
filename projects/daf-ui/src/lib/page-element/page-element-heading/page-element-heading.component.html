@@ -1,0 +1,21 @@
+<ng-container *ngIf="Element">
+	<h3>{{Element.Title}}</h3>
+
+	<ng-content select="lead-actions"></ng-content>
+
+	<span class="filler"></span>
+
+	<ng-content select="actions"></ng-content>
+
+	<button mat-icon-button [matMenuTriggerFor]="mainMenu"><mat-icon>keyboard_arrow_down</mat-icon></button>
+
+	<mat-menu #mainMenu="matMenu">
+		<button mat-menu-item (click)="OpenBuilderDialog(Element)" *ngIf="BuilderState != 'Builder' && ShowMainMenuActions">Edit Control</button>
+
+		<button mat-menu-item (click)="OpenElementSettings(Element)" *ngIf="ShowMainMenuActions">Settings</button>
+
+		<ng-content select="main-menu-actions"></ng-content>
+	</mat-menu>
+
+	<ng-content select="trail-actions"></ng-content>
+</ng-container>

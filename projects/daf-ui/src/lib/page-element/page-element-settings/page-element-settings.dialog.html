@@ -1,0 +1,151 @@
+<h2 mat-dialog-title>Page Element Settings</h2>
+
+<div mat-dialog-content>
+	<mat-tab-group #tabs="matTabGroup" class="push-out">
+		<mat-tab label="Details">
+			<mat-form-field>
+				<input matInput placeholder="Title" [(ngModel)]="Element.Title" name="title" />
+			</mat-form-field>
+		</mat-tab>
+	
+		<mat-tab label="Theme">
+			<mat-form-field>
+				<input matInput placeholder="Element Lookup" [(ngModel)]="Element.Rendering.Lookup" name="title" />
+			</mat-form-field>
+	
+			<ngx-monaco-editor [options]="StyleEditorOptions" [(ngModel)]="Element.Rendering.Style" *ngIf="Element.Rendering.Lookup && Tabs.selectedIndex == 1" name="style"></ngx-monaco-editor>
+		</mat-tab>
+	
+		<mat-tab label="Repeater Settings">
+			<mat-form-field *ngIf="DBConfig">
+				<mat-select placeholder="Data Set Connection" [(ngModel)]="Element.Rendering.RepeaterDataSet" name="repeaterDataSet">
+					<mat-option value="">-- No Repeat --</mat-option>
+	
+					<mat-option *ngFor="let dsKey of DataSetKeys" [value]="dsKey">{{dsKey}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</mat-tab>
+	
+		<mat-tab label="Data Mapping" *ngIf="Element.Rendering.DataMap">
+			<div class="push-out">
+				<mat-form-field>
+					<mat-select placeholder="Data Map Type" class="mat-full-width" [(ngModel)]="Element.Rendering.DataMap.MapType">
+						<mat-option value="">-- No Map --</mat-option>
+						<mat-option value="Flow">Flow</mat-option>
+						<mat-option value="Mapped">Mapped</mat-option>
+						<mat-option value="Orderd">Orderd</mat-option>
+						<mat-option value="ShowHide">Show/Hide</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+	
+			<div *ngIf="Element.Rendering.DataMap.MapType == 'Mapped'">
+				<ng-container *ngFor="let input of DataMapMapperInputs">
+					<ng-container *ngIf="DataMapMapperDetails.Map[input], let map">
+						<mat-form-field>
+							<input matInput placeholder="Map '{{input}}' to:" [(ngModel)]="map.Output" name="output" />
+						</mat-form-field>
+	
+						<mat-form-field class="push-right">
+							<mat-select placeholder="Inputs" [(ngModel)]="map.Reference">
+								<mat-option value="Data">Data</mat-option>
+	
+								<mat-option value="Context">Context</mat-option>
+	
+								<mat-option value="0">0</mat-option>
+	
+								<mat-option value="1">1</mat-option>
+	
+								<mat-option value="2">2</mat-option>
+	
+								<mat-option value="3">3</mat-option>
+	
+								<!--<mat-option value="more than this">and we need to be re-architecting it...  Add your 4, but queue up a story for arch review</mat-option>-->
+							</mat-select>
+						</mat-form-field>
+	
+						<mat-form-field *ngIf="map.Reference == 'Data'">
+							<mat-select placeholder="Data Set Connection" [(ngModel)]="map.DataKey" name="mappedDataKey" required>
+								<mat-option *ngFor="let dsKey of DataSetKeys" [value]="dsKey">{{dsKey}}</mat-option>
+							</mat-select>
+						</mat-form-field>
+		
+						<a mat-icon-button class="push-right" color="warn" (click)="DeleteDataMapMapperInput(input)">
+							<mat-icon>delete</mat-icon>
+						</a>
+					</ng-container>
+				</ng-container>
+	
+				<div class="push-out">
+					<mat-form-field>
+						<input matInput placeholder="New Object Input" [(ngModel)]="NewMapperInput" name="mapperInput" />
+					</mat-form-field>
+	
+					<a mat-icon-button class="push-right" color="primary" (click)="AddDataMapMapperInput()">
+						<mat-icon>add</mat-icon> Add Input
+					</a>
+				</div>
+			</div>
+	
+			<div *ngIf="Element.Rendering.DataMap.MapType == 'ShowHide'">
+				<div class="push-out" *ngIf="DataMapShowHideDetails.Left, let map">
+					<mat-form-field>
+						<input matInput placeholder="Left Map" [(ngModel)]="map.Output" name="leftMap" />
+					</mat-form-field>
+	
+					<mat-form-field class="push-right">
+						<mat-select placeholder="Inputs" [(ngModel)]="map.Reference">
+							<!--<mat-option value="Data">Data</mat-option>-->
+	
+							<mat-option value="Context">Context</mat-option>
+	
+							<mat-option value="0">0</mat-option>
+	
+							<mat-option value="1">1</mat-option>
+	
+							<mat-option value="2">2</mat-option>
+	
+							<mat-option value="3">3</mat-option>
+	
+							<!--<mat-option value="more than this">and we need to be re-architecting it...  Add your 4, but queue up a story for arch review</mat-option>-->
+						</mat-select>
+					</mat-form-field>
+				</div>
+	
+				<div class="push-out" *ngIf="DataMapShowHideDetails.Right, let map">
+					<mat-form-field>
+						<input matInput placeholder="Right Map" [(ngModel)]="map.Output" name="rightMap" />
+					</mat-form-field>
+	
+					<mat-form-field class="push-right">
+						<mat-select placeholder="Inputs" [(ngModel)]="map.Reference">
+							<!--<mat-option value="Data">Data</mat-option>-->
+	
+							<mat-option value="Context">Context</mat-option>
+	
+							<mat-option value="0">0</mat-option>
+	
+							<mat-option value="1">1</mat-option>
+	
+							<mat-option value="2">2</mat-option>
+	
+							<mat-option value="3">3</mat-option>
+	
+							<!--<mat-option value="more than this">and we need to be re-architecting it...  Add your 4, but queue up a story for arch review</mat-option>-->
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>
+		</mat-tab>
+	</mat-tab-group>
+</div>
+
+<div mat-dialog-actions>
+	<button mat-raised-button color="primary" (click)="Save()">
+		Save Control
+	</button>
+
+	<button mat-button color="warn" (click)="Cancel()">
+		Cancel
+	</button>
+</div>

@@ -1,0 +1,123 @@
+<h2 mat-dialog-title>Page Settings</h2>
+
+<div mat-dialog-content>
+	<mat-tab-group #tabs="matTabGroup">
+		<mat-tab>
+			<ng-template mat-tab-label>
+				<mat-icon>data_usage</mat-icon>
+	
+				Data
+			</ng-template>
+	
+			<form class="push-out" #pgDbForm="ngForm" *ngIf="DBConfig">
+				<!-- <mat-form-field class="mat-full-width">
+					<input matInput placeholder="Database Name" [(ngModel)]="DBConfig.DBName" name="columns" required />
+				</mat-form-field>
+	
+				<mat-slide-toggle [(ngModel)]="DBConfig.AutoSave" name="autoSave">Auto Save?</mat-slide-toggle>
+	
+				<mat-form-field class="mat-full-width">
+					<input matInput type="number" placeholder="Sync Seconds" [(ngModel)]="DBConfig.SyncSeconds" name="syncSec" />
+				</mat-form-field> -->
+	
+				<div>
+					<mat-form-field>
+						<input matInput placeholder="Data Set Key" [(ngModel)]="NewDataSetKey" name="newDSName" />
+					</mat-form-field>
+	
+					<a mat-button class="push-right" color="accent" (click)="AddDataSet()">
+						<mat-icon>add</mat-icon> Add Data Set
+					</a>
+				</div>
+	
+				<div *ngIf="DBConfig.DataSets">
+					<mat-list>
+						<mat-list-item class="push-out" *ngFor="let dataSetKey of DataSetKeys">
+							<h3 class="push-left">{{dataSetKey}}</h3>
+	
+							<mat-form-field class="push-left">
+								<input matInput placeholder="Data Set Type" [(ngModel)]="DBConfig.DataSets[dataSetKey].Type" [name]="'dsType' + dataSetKey" required />
+							</mat-form-field>
+	
+							<mat-slide-toggle class="push-left" [(ngModel)]="DBConfig.DataSets[dataSetKey].Query.Singleton" [name]="'config' + dataSetKey">Is Config?</mat-slide-toggle>
+	
+							<button mat-icon-button class="push-left" color="warn" (click)="DeleteDataSet(dataSetKey)">
+								<mat-icon>delete</mat-icon>
+							</button>
+						</mat-list-item>
+					</mat-list>
+				</div>
+			</form>
+		</mat-tab>
+	
+		<mat-tab>
+			<ng-template mat-tab-label [fxShow]="ForgeSettings">
+				<mat-icon>style</mat-icon>
+	
+				Application Theme
+			</ng-template>
+	
+			<div class="push-out">
+				<h2>Custom Styling (scss)</h2>
+	
+				<ngx-monaco-editor [options]="StyleEditorOptions" [(ngModel)]="ForgeSettings.Theme.Style" name="style" *ngIf="Tabs.selectedIndex == 1"></ngx-monaco-editor>
+			</div>
+		</mat-tab>
+	
+		<mat-tab>
+			<ng-template mat-tab-label [fxShow]="PageSettings">
+				<mat-icon>style</mat-icon>
+	
+				Page Theme
+			</ng-template>
+	
+			<div class="push-out">
+				<h2>Custom Styling (scss)</h2>
+	
+				<ngx-monaco-editor [options]="StyleEditorOptions" [(ngModel)]="PageSettings.Theme.Style" name="style" *ngIf="Tabs.selectedIndex == 2"></ngx-monaco-editor>
+			</div>
+		</mat-tab>
+	</mat-tab-group>
+</div>
+
+<div mat-dialog-actions>
+	<div *ngIf="Tabs?.selectedIndex == 0">
+		<div *ngIf="!Loading.Value">
+			<button mat-raised-button color="accent" (click)="SaveDBConfig()">
+				Save Page DB
+			</button>
+
+			<button mat-button color="warn" (click)="Cancel()">
+				Cancel
+			</button>
+		</div>
+	</div>
+	
+	<div *ngIf="Tabs?.selectedIndex == 1">
+		<div *ngIf="!Loading.Value">
+			<button mat-raised-button color="accent" (click)="SaveForgeSettings()">
+				Save App Theme
+			</button>
+
+			<button mat-button color="warn" (click)="Cancel()">
+				Cancel
+			</button>
+		</div>
+	</div>
+
+	<div *ngIf="Tabs?.selectedIndex == 2">
+		<div *ngIf="!Loading.Value">
+			<button mat-raised-button color="accent" (click)="SavePageSettings()">
+				Save Page Theme
+			</button>
+	
+			<button mat-button color="warn" (click)="Cancel()">
+				Cancel
+			</button>
+		</div>
+	</div>
+
+	<div class="push-out" *ngIf="Loading.Value">
+		<mat-spinner></mat-spinner>
+	</div>
+</div>
