@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatToolbarModule } from '@angular/material';
 import { FathymSharedModule } from '@lcu/hosting';
 import { PageElementComponent } from './page-element.component';
 import { PageSettingsDialog } from './page-settings/page-settings.dialog';
@@ -17,6 +18,7 @@ var comps = [
 	imports: [
 		FathymSharedModule,
 		DisplayComponentModule,
+		MatToolbarModule,
 	],
 	declarations: [
 		...comps,
