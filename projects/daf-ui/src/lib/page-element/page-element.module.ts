@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatToolbarModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatTabsModule, MatProgressSpinnerModule, MatFormFieldModule, MatListModule, MatSlideToggleModule, MatSelectModule, MatInputModule, MatMenuModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FathymSharedModule } from '@lcu/hosting';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { PageElementComponent } from './page-element.component';
 import { PageSettingsDialog } from './page-settings/page-settings.dialog';
 import { PageElementSettingsDialog } from './page-element-settings/page-element-settings.dialog';
@@ -18,6 +20,17 @@ var comps = [
 	imports: [
 		FathymSharedModule,
 		DisplayComponentModule,
+		MonacoEditorModule,
+		FlexLayoutModule,
+		MatFormFieldModule,
+		MatIconModule,
+		MatInputModule,
+		MatListModule,
+		MatMenuModule,
+		MatProgressSpinnerModule,
+		MatSelectModule,
+		MatSlideToggleModule,
+		MatTabsModule,
 		MatToolbarModule,
 	],
 	declarations: [
