@@ -4,6 +4,7 @@ import { PageElementComponent } from './page-element.component';
 import { PageSettingsDialog } from './page-settings/page-settings.dialog';
 import { PageElementSettingsDialog } from './page-element-settings/page-element-settings.dialog';
 import { PageElementHeadingComponent } from './page-element-heading/page-element-heading.component';
+import { DisplayComponentModule } from '../display-component/display-component.module';
 
 var comps = [
 	PageElementComponent,
@@ -15,6 +16,7 @@ var comps = [
 @NgModule({
 	imports: [
 		FathymSharedModule,
+		DisplayComponentModule,
 	],
 	declarations: [
 		...comps,
