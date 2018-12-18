@@ -6,6 +6,7 @@ import { DisplayModule } from './display/display.module';
 import { DisplayComponentModule } from './display-component/display-component.module';
 import { GenericDomainModule } from './generic-domain/generic-domain.module';
 import { PageElementModule } from './page-element/page-element.module';
+import { SolutionsModule } from './solutions/solutions.module';
 
 var modules = [
 	ComponentSelectorModule,
@@ -15,6 +16,7 @@ var modules = [
 	DisplayComponentModule,
 	GenericDomainModule,
 	PageElementModule,
+	SolutionsModule,
 ];
 
 @NgModule({
