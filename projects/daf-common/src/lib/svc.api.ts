@@ -8,4 +8,5 @@ export * from './svc/page-ui.service';
 export * from './svc/page.service';
 export * from './svc/provisioning.service';
 export * from './svc/reporting.service';
+export * from './svc/solution.service';
 export * from './svc/worker.service';

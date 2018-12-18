@@ -1,0 +1,47 @@
+<div class="solution-element push-out" *ngIf="Solution && !State">
+	<div class="push-out">
+		<display-solution [solution]="Solution" state="Heading"></display-solution>
+	</div>
+
+	<mat-tab-group>
+		<mat-tab>
+			<ng-template mat-tab-label>
+				<mat-icon class="example-tab-icon">info</mat-icon>
+
+				Overview
+			</ng-template>
+
+			<div class="push-out">
+				<display-solution [solution]="Solution" state="Overview"></display-solution>
+			</div>
+		</mat-tab>
+
+		<mat-tab>
+			<ng-template mat-tab-label>
+				<mat-icon class="example-tab-icon">attach_file</mat-icon>
+
+				Documentation
+			</ng-template>
+
+			<div class="push-out">
+				<display-solution [solution]="Solution" state="Documentation"></display-solution>
+			</div>
+		</mat-tab>
+
+		<mat-tab>
+			<ng-template mat-tab-label>
+				<mat-icon class="example-tab-icon">settings</mat-icon>
+
+				Manage
+			</ng-template>
+
+			<div class="push-out">
+				<display-solution [solution]="Solution" state="Manage"></display-solution>
+			</div>
+		</mat-tab>
+	</mat-tab-group> 
+</div>
+
+<ng-container *ngIf="Solution && State">
+	<display-solution [solution]="Solution" [state]="State"></display-solution>
+</ng-container>
