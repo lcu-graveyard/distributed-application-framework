@@ -1,26 +1,25 @@
-import { IDataGridModel } from '../models/data-grid-config.model';
+import { Observable } from 'rxjs/internal/Observable';
+import { DataGridFeatures } from './data-grid-features.config';
+import { IDataGridConfigModel } from '../models/data-grid-config.model';
 import { ColumnDefinition } from './column-def.config';
 import { IDataGridFeaturesModel } from '../models/data-grid-features.model';
 
-export class DataGridConfig implements IDataGridModel {
+export class DataGridConfig implements IDataGridConfigModel {
 
-    public api: string;
     public columnDefs: Array<ColumnDefinition>;
-    public data: Array<any>;
     public features: IDataGridFeaturesModel;
+    public service: Observable<any[]>;
 
   /**
    * Constructor for DataGridConfig
-   * @param api API URL
    * @param columdDefs Definitions for column properties
    * @param service Service to call for data
    * @param features Pagination and Filtering, and other things
    */
 
-    constructor(api: string, columnDefs: Array<ColumnDefinition>, data: Array<any>, features?: IDataGridFeaturesModel) {
-      this.api = api;
-      this.columnDefs = columnDefs;
-      this.data = data;
-      this.features = features;
+  constructor(service: Observable<any[]>, columnDefs: Array<ColumnDefinition>, features?: DataGridFeatures) {
+    this.columnDefs = columnDefs;
+    this.features = features;
+    this.service = service;
   }
 }

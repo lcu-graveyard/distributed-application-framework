@@ -1,11 +1,11 @@
-import { ColumnDefinition } from '../config/column-def.config';
-import { PaginationConfig } from '../config/pagination.config';
+import { DataGridPagination } from '../config/data-grid-pagination.config';
+import { ColumnDefinition } from './../config/column-def.config';
+import { Observable } from 'rxjs/internal/Observable';
 
-export interface IDataGridModel {
-    api: string;
-    columnDefs: Array<ColumnDefinition>;
-    data: Array<any>;
-    filter?: boolean;
-    paginator?: PaginationConfig;
-    service?: any;
-  }
+
+export interface IDataGridConfigModel {
+  columnDefs: Array<ColumnDefinition>;
+  filter?: boolean;
+  paginator?: DataGridPagination;
+  service?: Observable<any[]>;
+}

@@ -1,3 +1,4 @@
+<mat-spinner class="loading-indicator" *ngIf="showLoadingSpinner"></mat-spinner>
 <div fxLayoutAlign=" start center">
   <mat-form-field *ngIf="config?.features.filter" class="filter-field mr-3 ml-3">
     <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -37,9 +38,17 @@
       <!--
         Show data value
       -->
-      <div *ngIf="column.colType !== 'icon' || column.colType !== 'select'">
+      <span *ngIf="!column.valueAsIcon && column.colType !== 'select'">
         {{ column.value(item) | dateFormat: column.pipe }}
-      </div>
+      </span>
+
+      <!--
+        When showing an icon instead of data
+      -->
+      <span *ngIf="column.valueAsIcon">
+        <i style="font-size: 30px;" [ngClass]="column.icon"></i>
+        {{ column.setColumnData(item) }}
+      </span>
 
     </mat-cell>
   </ng-container>
@@ -55,3 +64,4 @@
   [pageSizeOptions]="config?.features.paginator.pageSizeOptions"
   showFirstLastButtons>
 </mat-paginator>
+
