@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Element Selector</h2>
+
+<div mat-dialog-content>
+	<mat-tab-group>
+		<mat-tab *ngFor="let setup of Setups">
+			<ng-template mat-tab-label>
+				<mat-icon>{{setup.Icon}}</mat-icon>
+	
+				{{setup.Name}}
+			</ng-template>
+	
+			<mat-nav-list>
+				<mat-list-item *ngFor="let module of setup.Modules" (click)="Save(module)">
+					<a matLine>
+						Select - {{module.Name}}
+					</a>
+	
+					<p matLine class="mat-body-1">Future description</p>
+				</mat-list-item>
+			</mat-nav-list>
+		</mat-tab>
+	</mat-tab-group>
+</div>
+
+<div mat-dialog-actions>
+	<button mat-button color="warn" (click)="Cancel()">
+		Cancel
+	</button>
+</div>

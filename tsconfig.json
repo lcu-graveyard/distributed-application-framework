@@ -19,16 +19,16 @@
       "dom"
     ],
     "paths": {
-      "daf-common": [
+      "@lcu/daf-common": [
         "dist/daf-common"
       ],
-      "daf-common/*": [
+      "@lcu/daf-common/*": [
         "dist/daf-common/*"
       ],
-      "daf-ui": [
+      "@lcu/daf-ui": [
         "dist/daf-ui"
       ],
-      "daf-ui/*": [
+      "@lcu/daf-ui/*": [
         "dist/daf-ui/*"
       ]
     }

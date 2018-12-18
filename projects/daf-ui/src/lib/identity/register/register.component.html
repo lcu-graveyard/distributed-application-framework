@@ -1,0 +1,41 @@
+<form [formGroup]="RegisterFormGroup" (ngSubmit)="HandleRegister(); ">
+    <mat-form-field class="mat-full-width">
+        <input matInput placeholder="Email" formControlName="username" required />
+
+        <mat-hint align="end">Must be a valid email address</mat-hint>
+
+        <mat-error *ngIf="Username.errors && Username.errors.email">Username must be a valid email address</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mat-full-width">
+        <input matInput type="password" placeholder="Password" formControlName="password" required />
+
+        <mat-hint align="end">Password must have a minimum of 8 characters, at least 6 unique characters, one uppercase, and one number.</mat-hint>
+
+        <mat-error *ngIf="Password.errors && Password.errors.minlength">Password must be at least 8 characters</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mat-full-width">
+        <input matInput type="password" placeholder="Password Confirmation" formControlName="passwordConfirmation" required />
+
+        <mat-error *ngIf="PasswordConfirmation.hasError('noMatch')">Passwords do not match</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mat-full-width">
+        <input matInput [placeholder]="PhoneNumberPlaceholder" formControlName="phoneNumber" />
+    </mat-form-field>
+
+    <h4 color="warn" *ngFor="let error of Errors">{{error}}</h4>
+
+    <div *ngIf="!Loading">
+        <button mat-raised-button color="primary" class="mat-button-lg" type="submit" [disabled]="!RegisterFormGroup.valid">
+            Create New Account
+        </button>
+    </div>
+
+    <mat-spinner class="mat-centered" *ngIf="Loading"></mat-spinner>
+</form>
+
+
+		
+
