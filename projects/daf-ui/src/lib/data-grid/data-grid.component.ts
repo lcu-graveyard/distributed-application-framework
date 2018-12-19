@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewChild, AfterViewInit, Input, Output } from '@angular/core';
+import { Component,
+  ViewChild,
+  AfterViewInit,
+  Input,
+  AfterContentChecked,
+  ChangeDetectorRef } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
@@ -11,7 +16,7 @@ import { IColumnConfigModel } from './models/column-config.model';
   templateUrl: './data-grid.component.html',
   styleUrls: ['./data-grid.component.css']
 })
-export class DataGridComponent implements OnInit, AfterViewInit {
+export class DataGridComponent implements AfterViewInit, AfterContentChecked {
 
   /**
    * DataGrid configuration properties
@@ -47,7 +52,7 @@ export class DataGridComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   /**
-   * Columns to display 
+   * Columns to display
    */
   public displayedColumns: Array<string> = [];
 
@@ -61,15 +66,23 @@ export class DataGridComponent implements OnInit, AfterViewInit {
    */
   public selection: SelectionModel<any> = new SelectionModel(true, []);
 
-  constructor() { }
+  /**
+   * Toggle loading indicator
+   */
+  public showLoadingSpinner: boolean = false;
 
-  ngOnInit() {
-    this.createDisplayedColumns();
-  }
+  constructor(private cdref: ChangeDetectorRef) { }
 
   ngAfterViewInit() {
     this.sorting();
     this.pagination();
+  }
+
+  /**
+   * Check view and children for changes
+   */
+  ngAfterContentChecked() {
+    this.cdref.detectChanges();
   }
 
   /**
@@ -80,8 +93,24 @@ export class DataGridComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    this.dataSource.data = this.config.data;
+    this.createDisplayedColumns();
+
+      if (this.config.service) {
+        this.toggleLoadingSpinner(true);
+        // service is passed in from parent component using the grid
+       this.config.service
+        .subscribe((res) => {
+          console.log('res', res);
+          this.dataSource.data = res;
+        }, (err) => {
+          console.log('error', err);
+        }, () => {
+          this.toggleLoadingSpinner(false);
+        }
+      );
+    }
   }
+
   /**
    * Return array of columns to display
    */
@@ -148,5 +177,13 @@ export class DataGridComponent implements OnInit, AfterViewInit {
    */
   public masterToggle(): void {
     this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  /**
+   *
+   * @param val property to toggle loading indicator
+   */
+  private toggleLoadingSpinner(val: boolean): void {
+    this.showLoadingSpinner = val;
   }
 }

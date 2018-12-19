@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ComponentSelectorModule } from './component-selector/component-selector.module';
 import { ControlBuilderModule } from './control-builder/control-builder.module';
 import { DataGridModule } from './data-grid/data-grid.module';
@@ -8,15 +9,16 @@ import { GenericDomainModule } from './generic-domain/generic-domain.module';
 import { PageElementModule } from './page-element/page-element.module';
 import { SolutionsModule } from './solutions/solutions.module';
 
-var modules = [
+const modules = [
+  CommonModule,
 	ComponentSelectorModule,
 	ControlBuilderModule,
-	// DataGridModule,
+	DataGridModule,
 	DisplayModule,
 	DisplayComponentModule,
 	GenericDomainModule,
 	PageElementModule,
-	SolutionsModule,
+  SolutionsModule
 ];
 
 @NgModule({

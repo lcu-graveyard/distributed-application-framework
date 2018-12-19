@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
-	MatFormFieldModule, MatTableModule, MatSortModule, MatPaginatorModule
+  MatFormFieldModule,
+  MatTableModule,
+  MatSortModule, MatPaginatorModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 // import { FathymSharedModule } from '@lcu/common';
-import { ForgeDisplayDirective } from '../display.directive';
+import { ForgeDisplayDirective } from '../display/display.directive';
 import { DataGridComponent } from './data-grid.component';
 
 @NgModule({
@@ -15,7 +18,8 @@ import { DataGridComponent } from './data-grid.component';
 		MatFormFieldModule,
 		MatTableModule,
 		MatSortModule,
-		MatPaginatorModule
+    MatPaginatorModule,
+    MatCheckboxModule
 	],
 	declarations: [
 	DataGridComponent,
@@ -23,7 +27,8 @@ import { DataGridComponent } from './data-grid.component';
 	],
 	exports: [
 	DataGridComponent,
-	ForgeDisplayDirective
+  ForgeDisplayDirective,
+  MatCheckboxModule
 	]
 })
 export class DataGridModule { }
