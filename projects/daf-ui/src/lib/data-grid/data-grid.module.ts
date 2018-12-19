@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -9,12 +10,13 @@ import {
 } from '@angular/material';
 
 // import { FathymSharedModule } from '@lcu/common';
-import { ForgeDisplayDirective } from '../display/display.directive';
+// import { ForgeDisplayDirective } from '../display/display.directive';
 import { DataGridComponent } from './data-grid.component';
 
 @NgModule({
 	imports: [
-		// FathymSharedModule,
+    // FathymSharedModule,
+    CommonModule,
 		MatFormFieldModule,
 		MatTableModule,
 		MatSortModule,
@@ -22,12 +24,10 @@ import { DataGridComponent } from './data-grid.component';
     MatCheckboxModule
 	],
 	declarations: [
-	DataGridComponent,
-	ForgeDisplayDirective
+	DataGridComponent
 	],
 	exports: [
 	DataGridComponent,
-  ForgeDisplayDirective,
   MatCheckboxModule
 	]
 })

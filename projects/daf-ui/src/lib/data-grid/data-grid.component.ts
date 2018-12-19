@@ -14,7 +14,7 @@ import { IColumnConfigModel } from './models/column-config.model';
 @Component({
   selector: 'f-data-grid',
   templateUrl: './data-grid.component.html',
-  styleUrls: ['./data-grid.component.css']
+  styleUrls: ['./data-grid.component.scss']
 })
 export class DataGridComponent implements AfterViewInit, AfterContentChecked {
 
