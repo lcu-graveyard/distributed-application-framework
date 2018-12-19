@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DataGridPipes } from './utils/pipes/data-grid.pipes';
 
 import {
   MatFormFieldModule,
@@ -24,11 +25,13 @@ import { DataGridComponent } from './data-grid.component';
     MatCheckboxModule
 	],
 	declarations: [
-	DataGridComponent
+  DataGridComponent,
+  DataGridPipes
 	],
 	exports: [
 	DataGridComponent,
-  MatCheckboxModule
+  MatCheckboxModule,
+  DataGridPipes
 	]
 })
 export class DataGridModule { }
