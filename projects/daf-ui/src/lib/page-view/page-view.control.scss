@@ -1,0 +1,10 @@
+:host {
+	.mat-toolbar {
+		z-index: 800;
+
+		.loading.mat-toolbar-row {
+			padding: 0;
+			height: auto;
+		}
+	}
+}

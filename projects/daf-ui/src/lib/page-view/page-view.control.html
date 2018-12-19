@@ -1,0 +1,84 @@
+<mat-toolbar class="sticky" *ngIf="!HideEditing">
+	<mat-toolbar-row>
+		<ng-container>
+			<button mat-button class="push-left" [matMenuTriggerFor]="menu" *ngIf="!HidePagesList" [disabled]="Loading.Value">
+				Pages
+
+				<mat-icon>keyboard_arrow_down</mat-icon>
+			</button>
+
+			<mat-menu #menu="matMenu">
+				<a *ngFor="let config of Setup?.Configs" mat-menu-item [routerLink]="['/page', config.Lookup]">
+					{{config.Name}}
+				</a>
+
+				<button mat-menu-item routerLink="/page/create">
+					Create New Page
+
+					<mat-icon>add</mat-icon>
+				</button>
+			</mat-menu>
+		</ng-container>
+
+		<a mat-button class="push-left" (click)="State = 'Builder'" *ngIf="!IsBuild" [disabled]="Loading.Value">
+			<mat-icon>edit</mat-icon>
+
+			Edit Page
+		</a>
+
+		<ng-container *ngIf="IsBuild">
+			<button mat-button class="push-left" (click)="AddPageElement()" [disabled]="Loading.Value">
+				<mat-icon>add</mat-icon>
+
+				Add Component
+			</button>
+
+			<button mat-raised-button class="push-left" (click)="Save()" [disabled]="Loading.Value">
+				<mat-icon>save</mat-icon>
+
+				Save Page
+			</button>
+
+			<a mat-button color="warn" class="push-left" (click)="CloseEditing()" [disabled]="Loading.Value">
+				<mat-icon>close</mat-icon>
+
+				Cancel Editing
+			</a>
+
+			<a mat-icon-button (click)="OpenPageSettingsDialog()" routerLinkActive="active" [disabled]="Loading.Value">
+				<mat-icon>settings</mat-icon>
+			</a>
+		</ng-container>
+
+		<span class="filler"></span>
+
+		<a mat-raised-button color="accent" class="push-left" routerLink="/page/_tutorial" *ngIf="Lookup != '_tutorial' && !HideTutorial" [disabled]="Loading.Value">
+			<mat-icon>apps</mat-icon>
+
+			View Tutorial Page
+		</a>
+	</mat-toolbar-row>
+
+	<mat-toolbar-row class="loading">
+		<mat-progress-bar mode="indeterminate" *ngIf="Loading.Value"></mat-progress-bar>
+	</mat-toolbar-row>
+</mat-toolbar>
+
+<div class="page" dnd-sortable-container [sortableData]="Elements" (mouseenter)="ChangeDragOperation('ForgePageView')" (mouseleave)="ChangeDragOperation(null)">
+	<div *ngIf="HideEditing">
+		<mat-progress-bar mode="indeterminate" *ngIf="Loading.Value"></mat-progress-bar>
+	</div>
+
+	<div *ngFor="let pe of Elements; let i = index;" dnd-sortable [sortableIndex]="i" [dragEnabled]="true">
+		<!--<div>Drag Op: {{DragOperation}}</div>-->
+		<!--DragOperation == 'ForgePageView'-->
+		<!-- [(dragOp)]="DragOperation"-->
+		<forge-page-element [element]="pe" [state]="State" [page-save]="true" [data]="Data">
+			<ng-container ngProjectAs="trail-actions">
+				<button mat-icon-button>
+					<mat-icon>drag_handle</mat-icon>
+				</button>
+			</ng-container>
+		</forge-page-element>
+	</div>
+</div>
