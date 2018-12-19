@@ -3,8 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PageConfig, PageElement, PageSettings, PagesSetup } from '@lcu/elements';
 import { Loading, isResultSuccess, BaseModeledResponse } from '@lcu/core';
 import { ForgePageService, PagesSetupContext, PageUIService } from '@lcu/daf-common/lcu.api';
-import { ComponentSelectorDialog } from '@lcu/daf-ui/lcu.api';
-import { ComponentSelectorDialogConfig, ComponentSelectorDialogResult } from '../component-selector/component-selector.dialog';
+import { ComponentSelectorDialogConfig, ComponentSelectorDialogResult, ComponentSelectorDialog } from '../component-selector/component-selector.dialog';
 import { PageSettingsDialog } from '../page-element/page-settings/page-settings.dialog';
 import { isStatusSuccess } from '@lcu/common';
 
