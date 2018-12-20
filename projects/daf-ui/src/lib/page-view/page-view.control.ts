@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageConfig, PageElement, PageSettings, PagesSetup } from '@lcu/elements';
 import { Loading, isResultSuccess, BaseModeledResponse } from '@lcu/core';
-import { ForgePageService, PagesSetupContext, PageUIService } from '@lcu/daf-common';
+import { ForgePageService, PagesSetupContext, PageUIService, DataFlowContext } from '@lcu/daf-common';
 import { ComponentSelectorDialogConfig, ComponentSelectorDialogResult, ComponentSelectorDialog } from '../component-selector/component-selector.dialog';
 import { PageSettingsDialog } from '../page-element/page-settings/page-settings.dialog';
 import { isStatusSuccess } from '@lcu/common';
@@ -26,7 +26,9 @@ export class PageViewControl {
 
 	public DragOperation: string;
 
-	public get Data() {
+	public get Data(): {
+        [key: string]: DataFlowContext<any>;
+    } {
 		return this.pgSvc.Data;
 	}
 
