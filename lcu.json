@@ -1,5 +1,5 @@
-{ 
-    "templates": {
-        "repository": "lowcodeunit-devkit/lcu-cli-templates-core"
-    }
+{
+	"templates": {
+		"repository": "lowcodeunit-devkit/lcu-cli-templates-core"
+	}
 }
