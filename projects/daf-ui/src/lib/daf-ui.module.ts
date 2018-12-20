@@ -1,4 +1,3 @@
-import { PageViewModule } from './page-view/page-view.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComponentSelectorModule } from './component-selector/component-selector.module';
@@ -19,7 +18,6 @@ const modules = [
 	DisplayComponentModule,
 	GenericDomainModule,
 	PageElementModule,
-	PageViewModule,
   SolutionsModule
 ];
 
