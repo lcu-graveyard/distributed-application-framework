@@ -1,10 +1,6 @@
 {
   "name": "@lcu/daf-common",
-<<<<<<< HEAD
-  "version": "0.0.10",
-=======
   "version": "0.0.14",
->>>>>>> 2b3f0a51f9c2702a3fc9d40d89ab46418025fd7a
   "peerDependencies": {
     "@angular/common": "^7.1.0",
     "@angular/core": "^7.1.0"
