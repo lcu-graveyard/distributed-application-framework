@@ -1,3 +1,4 @@
+import { PageViewModule } from './page-view/page-view.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComponentSelectorModule } from './component-selector/component-selector.module';
@@ -8,7 +9,6 @@ import { DisplayComponentModule } from './display-component/display-component.mo
 import { GenericDomainModule } from './generic-domain/generic-domain.module';
 import { PageElementModule } from './page-element/page-element.module';
 import { SolutionsModule } from './solutions/solutions.module';
-import { PageViewModule } from '@lcu/daf-ui/lcu.api';
 
 const modules = [
   CommonModule,
