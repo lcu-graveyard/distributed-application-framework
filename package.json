@@ -1,6 +1,6 @@
 {
 	"name": "@lowcodeunit/distributed-application-framework",
-	"version": "0.0.12",
+	"version": "0.0.13",
 	"scripts": {
 		"deploy": "npm version patch && npm run deploy:all",
 		"deploy:all": "npm run deploy:daf-common && npm run deploy:daf-ui",
