@@ -32,6 +32,8 @@
 		"@lcu/apps": "0.0.19",
 		"@lcu/common": "0.0.19",
 		"@lcu/core": "0.0.19",
+		"@lcu/daf-common": "0.0.21",
+		"@lcu/daf-ui": "0.0.21",
 		"@lcu/elements": "0.0.19",
 		"@lcu/enterprises": "0.0.3",
 		"@lcu/hosting": "0.0.19",
