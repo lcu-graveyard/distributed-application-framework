@@ -38,10 +38,11 @@
         <!--Set data values for each row-->
         {{ column.setValue(item) }}
 
-        <!--Toggle icon on and off-->
+        <!--Toggle icons on and off-->
         <i *ngIf="column.showIcon" style="font-size: 30px;" class="mr-2" [ngClass]="column.icon"></i>
 
         <!--Toggle data value on and off-->
+        <!--column.pipe value comes from columnDefinition-->
         <span *ngIf="column.showValue">{{ column.value | dataGridPipes: column.pipe }}</span>
       </span>
 

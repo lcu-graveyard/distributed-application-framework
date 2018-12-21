@@ -3,13 +3,13 @@ import { IColumnConfigModel } from '../models/column-config.model';
 export class ColumnDefinition implements IColumnConfigModel {
   public colType: string;
   public icon: string;
-  public title: string;
-  public sortable?: boolean;
+  public iconConfigFunc?: Function;
   public pipe?: string;
-  public value: string;
+  public title: string;
   public showIcon: boolean;
   public showValue: boolean;
-  public iconConfigFunc?: Function;
+  public sortable?: boolean;
+  public value: string;
 
 /**
  * Constructor for Grid column definitions
@@ -41,7 +41,7 @@ export class ColumnDefinition implements IColumnConfigModel {
   }
 
   /**
-   * Set values and toggle icons and data values on and off
+   * Set values and toggle icons or data values on / off
    * @param colObj Each item coming from the grid rows
    */
   public setValue<T>(colObj: T): void {

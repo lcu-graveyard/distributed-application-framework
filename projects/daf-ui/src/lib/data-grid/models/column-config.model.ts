@@ -1,11 +1,11 @@
 export interface IColumnConfigModel {
   colType: string;
   icon: string;
-  title: string;
-  value: string;
+  iconConfigFunc?: Function;
+  pipe?: string;
   showIcon: boolean;
   showValue: boolean;
   sortable?: boolean;
-  pipe?: string;
-  iconConfigFunc?: Function;
+  title: string;
+  value: string;
 }
