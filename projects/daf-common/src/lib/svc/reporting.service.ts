@@ -2,6 +2,7 @@ import { Inject, Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DAFService } from '@lcu/api';
 import { BaseModeledResponse } from '@lcu/core';
+import { EmbedConfig } from '@lcu/apps';
 
 @Injectable({
 	providedIn: 'root'
@@ -55,15 +56,15 @@ export class ReportingService extends DAFService {
 		return this.get(`${this.rootUrl}/${this.listTilesUrl}?dashboardLookup=${dashboardLookup}`);
 	}
 
-	public LoadDashboardConfig(lookup: string): Observable<BaseModeledResponse<any>> {
+	public LoadDashboardConfig(lookup: string): Observable<BaseModeledResponse<EmbedConfig>> {
 		return this.get(`${this.rootUrl}/${this.loadDashboardConfigUrl}/${lookup}`);
 	}
 
-	public LoadReportConfig(lookup: string): Observable<BaseModeledResponse<any>> {
+	public LoadReportConfig(lookup: string): Observable<BaseModeledResponse<EmbedConfig>> {
 		return this.get(`${this.rootUrl}/${this.loadReportConfigUrl}/${lookup}`);
 	}
 
-	public LoadTileConfig(lookup: string, dashboardLookup: string): Observable<BaseModeledResponse<any>> {
+	public LoadTileConfig(lookup: string, dashboardLookup: string): Observable<BaseModeledResponse<EmbedConfig>> {
 		return this.get(`${this.rootUrl}/${this.loadTileConfigUrl}/${lookup}?dashboardLookup=${dashboardLookup}`);
 	}
 
