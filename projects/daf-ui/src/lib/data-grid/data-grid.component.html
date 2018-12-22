@@ -25,7 +25,6 @@
     </mat-header-cell>
 
     <mat-cell *matCellDef="let item">
-
       <!--
         Show select checkbox in the row
       -->
@@ -35,26 +34,28 @@
                     [checked]="selection.isSelected(item)">
       </mat-checkbox>
 
-      <!--
-        Show data value
-      -->
-      <span *ngIf="!column.valueAsIcon && column.colType !== 'select'">
-        {{ column.value(item) | dataGridPipes: column.pipe }}
-      </span>
+      <span *ngIf="column.colType !== 'select'">
+        <!--Set data values for each row-->
+        {{ column.setValue(item) }}
 
-      <!--
-        When showing an icon instead of data
-      -->
-      <span *ngIf="column.valueAsIcon">
-        <i style="font-size: 30px;" [ngClass]="column.icon"></i>
-        {{ column.setColumnData(item) }}
+        <!--Toggle icons on and off-->
+        <i *ngIf="column.showIcon" style="font-size: 30px;" class="mr-2" [ngClass]="column.icon"></i>
+
+        <!--Toggle data value on and off-->
+        <!--column.pipe value comes from columnDefinition-->
+        <span *ngIf="column.showValue">{{ column.value | dataGridPipes: column.pipe }}</span>
       </span>
 
     </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; let odd = odd; let even = even; columns: displayedColumns;" [ngClass]= "{ 'gray': even, 'light-gray': odd }" (click)="selection.toggle(row)"></mat-row>
+  <mat-row *matRowDef="let row;
+                       let odd = odd;
+                       let even = even;
+                       columns: displayedColumns;"
+                       [ngClass]= "{ 'gray': even, 'light-gray': odd }"
+                       (click)="selection.toggle(row)"></mat-row>
 
 </mat-table>
 <mat-paginator
