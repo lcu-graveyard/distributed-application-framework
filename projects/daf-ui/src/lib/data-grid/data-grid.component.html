@@ -50,7 +50,12 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; let odd = odd; let even = even; columns: displayedColumns;" [ngClass]= "{ 'gray': even, 'light-gray': odd }" (click)="selection.toggle(row)"></mat-row>
+  <mat-row *matRowDef="let row;
+                       let odd = odd;
+                       let even = even;
+                       columns: displayedColumns;"
+                       [ngClass]= "{ 'gray': even, 'light-gray': odd }"
+                       (click)="selection.toggle(row)"></mat-row>
 
 </mat-table>
 <mat-paginator

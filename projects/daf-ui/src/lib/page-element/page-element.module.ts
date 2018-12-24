@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatToolbarModule, MatIconModule, MatTabsModule, MatProgressSpinnerModule, MatFormFieldModule, MatListModule, MatSlideToggleModule, MatSelectModule, MatInputModule, MatMenuModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatTabsModule, MatProgressSpinnerModule, MatFormFieldModule, MatListModule, MatSlideToggleModule, MatSelectModule, MatInputModule, MatMenuModule, MatButtonModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FathymSharedModule } from '@lcu/hosting';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
@@ -22,6 +22,7 @@ var comps = [
 		DisplayComponentModule,
 		MonacoEditorModule,
 		FlexLayoutModule,
+		MatButtonModule,
 		MatFormFieldModule,
 		MatIconModule,
 		MatInputModule,
