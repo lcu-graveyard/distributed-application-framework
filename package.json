@@ -27,7 +27,7 @@
 		"@angular/platform-browser": "~7.1.0",
 		"@angular/platform-browser-dynamic": "~7.1.0",
 		"@angular/router": "^7.1.4",
-		"@beyerleinf/ngx-dnd": "^6.0.0-preview3",
+		"@beyerleinf/ngx-dnd": "6.0.0-preview3",
 		"@lcu/api": "0.0.20",
 		"@lcu/apps": "0.0.20",
 		"@lcu/common": "0.0.20",
