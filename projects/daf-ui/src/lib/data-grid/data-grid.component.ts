@@ -100,10 +100,9 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
         // service is passed in from parent component using the grid
        this.config.service
         .subscribe((res) => {
-          console.log('res', res);
           this.dataSource.data = res;
         }, (err) => {
-          console.log('error', err);
+          console.error('DataGrid Component - setData error', err);
         }, () => {
           this.toggleLoadingSpinner(false);
         }

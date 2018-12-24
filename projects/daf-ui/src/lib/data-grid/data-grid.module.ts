@@ -10,28 +10,25 @@ import {
   MatCheckboxModule
 } from '@angular/material';
 
-// import { FathymSharedModule } from '@lcu/common';
-// import { ForgeDisplayDirective } from '../display/display.directive';
 import { DataGridComponent } from './data-grid.component';
 
 @NgModule({
-	imports: [
-    // FathymSharedModule,
+  imports: [
     CommonModule,
-		MatFormFieldModule,
-		MatTableModule,
-		MatSortModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatSortModule,
     MatPaginatorModule,
     MatCheckboxModule
-	],
-	declarations: [
+  ],
+  declarations: [
   DataGridComponent,
   DataGridPipes
-	],
-	exports: [
-	DataGridComponent,
+  ],
+  exports: [
+  DataGridComponent,
   MatCheckboxModule,
   DataGridPipes
-	]
+  ]
 })
 export class DataGridModule { }
