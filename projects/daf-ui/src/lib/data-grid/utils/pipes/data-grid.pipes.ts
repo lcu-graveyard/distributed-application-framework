@@ -60,7 +60,7 @@ export class DataGridPipes implements PipeTransform {
     }
 
     /**
-     * Return temperature in fahrenheit
+     * Return temperature in fahrenheit, append °F
      */
     if (args.toLowerCase() === PipeConstants.PIPE_TEMP_FAHRENHEIT) {
       const pipe = new DecimalPipe('en-US');
@@ -71,14 +71,14 @@ export class DataGridPipes implements PipeTransform {
     }
 
     /**
-     * Return temperature in celsius
+     * Return temperature in celsius, append °C
      */
     if (args.toLowerCase() === PipeConstants.PIPE_TEMP_CELSIUS) {
       const pipe = new DecimalPipe('en-US');
      // const tempareature = (value - 32) / 1.8 ;
       const transformed = pipe.transform(value, '1.2-2');
 
-      return transformed + ' °F';
+      return transformed + ' °C';
     }
 
 
