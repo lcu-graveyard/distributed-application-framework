@@ -3,9 +3,6 @@ import { DatePipe, DecimalPipe, PercentPipe } from '@angular/common';
 
 import { PipeConstants } from '../constants/pipe.constants';
 
-/**
- * Pipes to use with the datagrid
- */
 @Pipe({
   name: 'dataGridPipes'
 })
