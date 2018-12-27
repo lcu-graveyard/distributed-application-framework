@@ -126,7 +126,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
   /**
    * When sorting is set in columnDef
    */
-  private sorting(): void {
+  private sorting(evt?: Event): void {
     this.dataSource.sort = this.sort;
   }
 
