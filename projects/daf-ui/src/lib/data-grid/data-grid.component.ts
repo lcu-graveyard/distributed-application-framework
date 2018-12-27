@@ -126,7 +126,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
   /**
    * When sorting is set in columnDef
    */
-  private sorting(evt?: Event): void {
+  public sorting(evt?: Event): void {
     this.dataSource.sort = this.sort;
   }
 
@@ -134,7 +134,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * Toggle pagination
    * Pagination properties
    */
-  private pagination(): void {
+  public pagination(): void {
     if (!this.config || !this.config.features.paginator) {
       return;
     }
