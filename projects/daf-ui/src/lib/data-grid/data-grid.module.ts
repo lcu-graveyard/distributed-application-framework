@@ -7,7 +7,8 @@ import {
   MatFormFieldModule,
   MatTableModule,
   MatSortModule, MatPaginatorModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import { DataGridComponent } from './data-grid.component';
@@ -19,7 +20,8 @@ import { DataGridComponent } from './data-grid.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
   DataGridComponent,
