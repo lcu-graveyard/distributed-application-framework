@@ -1,4 +1,4 @@
-<!-- <mat-spinner class="loading-indicator" *ngIf="showLoadingSpinner"></mat-spinner> -->
+<mat-spinner class="loading-indicator" *ngIf="showLoadingSpinner"></mat-spinner>
 <div fxLayoutAlign=" start center">
   <mat-form-field *ngIf="config?.features.filter" class="filter-field mr-3 ml-3">
     <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
