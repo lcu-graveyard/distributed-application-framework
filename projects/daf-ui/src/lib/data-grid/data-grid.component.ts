@@ -8,7 +8,7 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
 import { DataGridConfig } from './config/data-grid.config';
-import { IColumnConfigModel } from './models/column-config.model';
+import { ColumnConfigModel } from './models/column-config.model';
 
 
 @Component({
@@ -159,7 +159,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * @param config grid conifguration object
    * @param col grid column
    */
-  public toggleSelection(config: DataGridConfig, col: IColumnConfigModel): boolean {
+  public toggleSelection(config: DataGridConfig, col: ColumnConfigModel): boolean {
     return col.colType === 'select';
   }
 /**
