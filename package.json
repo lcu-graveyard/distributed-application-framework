@@ -1,10 +1,6 @@
 {
 	"name": "@lowcodeunit/distributed-application-framework",
-<<<<<<< HEAD
-	"version": "0.0.39",
-=======
 	"version": "0.0.72",
->>>>>>> 24b31cd0768a6c03b45798b3b38068bfa2362213
 	"scripts": {
 		"deploy": "npm version patch && npm run deploy:all",
 		"deploy:all": "npm run deploy:daf-common && npm run deploy:daf-ui",
@@ -31,35 +27,18 @@
 		"@angular/platform-browser": "~7.1.0",
 		"@angular/platform-browser-dynamic": "~7.1.0",
 		"@angular/router": "^7.1.4",
-<<<<<<< HEAD
-		"@beyerleinf/ngx-dnd": "^6.0.0-preview3",
-		"@lcu/api": "0.0.20",
-		"@lcu/apps": "0.0.20",
-		"@lcu/common": "0.0.20",
-		"@lcu/core": "0.0.20",
-		"@lcu/daf-common": "0.0.39",
-		"@lcu/daf-ui": "0.0.39",
-		"@lcu/elements": "0.0.20",
-=======
 		"@beyerleinf/ngx-dnd": "6.0.0-preview3",
 		"@lcu/api": "0.0.21",
 		"@lcu/apps": "0.0.21",
 		"@lcu/common": "0.0.21",
 		"@lcu/core": "0.0.21",
 		"@lcu/elements": "0.0.21",
->>>>>>> 24b31cd0768a6c03b45798b3b38068bfa2362213
 		"@lcu/enterprises": "0.0.3",
 		"@lcu/hosting": "0.0.21",
 		"@lcu/identity": "0.0.1",
-<<<<<<< HEAD
-		"@lcu/routing": "0.0.20",
-		"@lcu/solutions": "0.0.20",
-		"@lowcodeunit-devkit/ng-lcu": "0.0.108",
-=======
 		"@lcu/routing": "0.0.21",
 		"@lcu/solutions": "0.0.21",
 		"@lowcodeunit-devkit/ng-lcu": "0.0.113",
->>>>>>> 24b31cd0768a6c03b45798b3b38068bfa2362213
 		"angular-font-awesome": "^3.1.2",
 		"core-js": "^2.5.4",
 		"dot-object": "^1.7.1",
