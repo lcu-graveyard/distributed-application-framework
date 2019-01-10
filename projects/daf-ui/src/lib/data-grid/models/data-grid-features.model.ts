@@ -1,6 +1,6 @@
 import { PaginationConfig } from '../config/pagination.config';
 
-export class IDataGridFeaturesModel {
+export class DataGridFeaturesModel {
     public paginator: PaginationConfig;
     public rowSelectable: boolean = false;
     public filter: boolean = false;

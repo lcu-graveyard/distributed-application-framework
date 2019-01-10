@@ -3,9 +3,9 @@ import { ColumnDefinition } from './../config/column-def.config';
 import { Observable } from 'rxjs/internal/Observable';
 
 
-export interface IDataGridConfigModel {
-  columnDefs: Array<ColumnDefinition>;
-  filter?: boolean;
-  paginator?: DataGridPagination;
-  service?: Observable<any[]>;
+export class DataGridConfigModel {
+  public columnDefs: Array<ColumnDefinition>;
+  public filter?: boolean;
+  public paginator?: DataGridPagination;
+  public service?: Observable<any[]>;
 }

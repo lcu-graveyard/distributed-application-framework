@@ -1,6 +1,10 @@
 {
 	"name": "@lowcodeunit/distributed-application-framework",
+<<<<<<< HEAD
 	"version": "0.0.39",
+=======
+	"version": "0.0.72",
+>>>>>>> 24b31cd0768a6c03b45798b3b38068bfa2362213
 	"scripts": {
 		"deploy": "npm version patch && npm run deploy:all",
 		"deploy:all": "npm run deploy:daf-common && npm run deploy:daf-ui",
@@ -27,6 +31,7 @@
 		"@angular/platform-browser": "~7.1.0",
 		"@angular/platform-browser-dynamic": "~7.1.0",
 		"@angular/router": "^7.1.4",
+<<<<<<< HEAD
 		"@beyerleinf/ngx-dnd": "^6.0.0-preview3",
 		"@lcu/api": "0.0.20",
 		"@lcu/apps": "0.0.20",
@@ -35,29 +40,45 @@
 		"@lcu/daf-common": "0.0.39",
 		"@lcu/daf-ui": "0.0.39",
 		"@lcu/elements": "0.0.20",
+=======
+		"@beyerleinf/ngx-dnd": "6.0.0-preview3",
+		"@lcu/api": "0.0.21",
+		"@lcu/apps": "0.0.21",
+		"@lcu/common": "0.0.21",
+		"@lcu/core": "0.0.21",
+		"@lcu/elements": "0.0.21",
+>>>>>>> 24b31cd0768a6c03b45798b3b38068bfa2362213
 		"@lcu/enterprises": "0.0.3",
-		"@lcu/hosting": "0.0.20",
+		"@lcu/hosting": "0.0.21",
 		"@lcu/identity": "0.0.1",
+<<<<<<< HEAD
 		"@lcu/routing": "0.0.20",
 		"@lcu/solutions": "0.0.20",
 		"@lowcodeunit-devkit/ng-lcu": "0.0.108",
+=======
+		"@lcu/routing": "0.0.21",
+		"@lcu/solutions": "0.0.21",
+		"@lowcodeunit-devkit/ng-lcu": "0.0.113",
+>>>>>>> 24b31cd0768a6c03b45798b3b38068bfa2362213
 		"angular-font-awesome": "^3.1.2",
 		"core-js": "^2.5.4",
 		"dot-object": "^1.7.1",
+		"font-awesome": "^4.7.0",
+		"hammerjs": "^2.0.8",
 		"ngx-monaco-editor": "^6.0.0",
 		"rxjs": "~6.3.3",
 		"tslib": "^1.9.0",
 		"zone.js": "~0.8.26"
 	},
 	"devDependencies": {
-		"@angular-devkit/build-angular": "~0.11.0",
-		"@angular-devkit/build-ng-packagr": "~0.11.0",
+		"@angular-devkit/build-angular": "~0.11.4",
+		"@angular-devkit/build-ng-packagr": "~0.11.4",
 		"@angular/cli": "~7.1.3",
 		"@angular/compiler-cli": "~7.1.0",
 		"@angular/language-service": "~7.1.0",
-		"@types/node": "~8.9.4",
 		"@types/jasmine": "~2.8.8",
 		"@types/jasminewd2": "~2.0.3",
+		"@types/node": "~8.9.4",
 		"codelyzer": "~4.5.0",
 		"jasmine-core": "~2.99.1",
 		"jasmine-spec-reporter": "~4.2.1",
@@ -66,7 +87,7 @@
 		"karma-coverage-istanbul-reporter": "~2.0.1",
 		"karma-jasmine": "~1.1.2",
 		"karma-jasmine-html-reporter": "^0.2.2",
-		"ng-packagr": "^4.2.0",
+		"ng-packagr": "^4.4.5",
 		"protractor": "~5.4.0",
 		"ts-node": "~7.0.0",
 		"tsickle": ">=0.29.0",

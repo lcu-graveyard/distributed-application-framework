@@ -8,7 +8,7 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
 import { DataGridConfig } from './config/data-grid.config';
-import { IColumnConfigModel } from './models/column-config.model';
+import { ColumnConfigModel } from './models/column-config.model';
 
 
 @Component({
@@ -100,10 +100,9 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
         // service is passed in from parent component using the grid
        this.config.service
         .subscribe((res) => {
-          console.log('res', res);
           this.dataSource.data = res;
         }, (err) => {
-          console.log('error', err);
+          console.error('DataGrid Component - setData error', err);
         }, () => {
           this.toggleLoadingSpinner(false);
         }
@@ -127,7 +126,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
   /**
    * When sorting is set in columnDef
    */
-  private sorting(): void {
+  public sorting(evt?: Event): void {
     this.dataSource.sort = this.sort;
   }
 
@@ -135,7 +134,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * Toggle pagination
    * Pagination properties
    */
-  private pagination(): void {
+  public pagination(): void {
     if (!this.config || !this.config.features.paginator) {
       return;
     }
@@ -160,7 +159,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * @param config grid conifguration object
    * @param col grid column
    */
-  public toggleSelection(config: DataGridConfig, col: IColumnConfigModel): boolean {
+  public toggleSelection(config: DataGridConfig, col: ColumnConfigModel): boolean {
     return col.colType === 'select';
   }
 /**

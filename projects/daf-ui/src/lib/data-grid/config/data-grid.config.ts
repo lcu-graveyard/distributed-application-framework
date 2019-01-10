@@ -1,13 +1,12 @@
 import { Observable } from 'rxjs/internal/Observable';
 import { DataGridFeatures } from './data-grid-features.config';
-import { IDataGridConfigModel } from '../models/data-grid-config.model';
 import { ColumnDefinition } from './column-def.config';
-import { IDataGridFeaturesModel } from '../models/data-grid-features.model';
+import { DataGridFeaturesModel } from '../models/data-grid-features.model';
 
-export class DataGridConfig implements IDataGridConfigModel {
+export class DataGridConfig {
 
     public columnDefs: Array<ColumnDefinition>;
-    public features: IDataGridFeaturesModel;
+    public features: DataGridFeaturesModel;
     public service: Observable<any[]>;
 
   /**

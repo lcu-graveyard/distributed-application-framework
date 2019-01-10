@@ -1,6 +1,6 @@
-import { IColumnConfigModel } from '../models/column-config.model';
+import { ColumnConfigModel } from '../models/column-config.model';
 
-export class ColumnDefinition implements IColumnConfigModel {
+export class ColumnDefinition {
   public colType: string;
   public icon: string;
   public iconConfigFunc?: Function;

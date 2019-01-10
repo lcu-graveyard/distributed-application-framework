@@ -1,10 +1,10 @@
-<!-- <mat-spinner class="loading-indicator" *ngIf="showLoadingSpinner"></mat-spinner> -->
 <div fxLayoutAlign=" start center">
   <mat-form-field *ngIf="config?.features.filter" class="filter-field mr-3 ml-3">
     <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
 </div>
-<mat-table [dataSource]="dataSource" matSort *ngIf="config">
+<mat-table [dataSource]="dataSource" matSort *ngIf="config" (matSortChange)="sorting($event)">
+  <mat-spinner class="loading-indicator" layout-align="center center" *ngIf="showLoadingSpinner"></mat-spinner>
   <ng-container *ngFor="let column of config.columnDefs" matColumnDef="{{ column.colType }}">
     <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sortable">
 
