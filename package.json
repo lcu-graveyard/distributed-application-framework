@@ -1,6 +1,6 @@
 {
 	"name": "@lowcodeunit/distributed-application-framework",
-	"version": "0.0.72",
+	"version": "0.0.76",
 	"scripts": {
 		"deploy": "npm version patch && npm run deploy:all",
 		"deploy:all": "npm run deploy:daf-common && npm run deploy:daf-ui",
@@ -35,7 +35,6 @@
 		"@lcu/elements": "0.0.21",
 		"@lcu/enterprises": "0.0.3",
 		"@lcu/hosting": "0.0.21",
-		"@lcu/identity": "0.0.1",
 		"@lcu/routing": "0.0.21",
 		"@lcu/solutions": "0.0.21",
 		"@lowcodeunit-devkit/ng-lcu": "0.0.113",
