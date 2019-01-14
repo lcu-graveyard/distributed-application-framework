@@ -3,7 +3,6 @@
     <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
 </div>
-<p>Loading</p>
 <mat-progress-bar mode="indeterminate" *ngIf="showLoader"></mat-progress-bar>
 <mat-table [dataSource]="dataSource" matSort *ngIf="config" (matSortChange)="sorting($event)">
   <ng-container *ngFor="let column of config.columnDefs" matColumnDef="{{ column.colType }}">
