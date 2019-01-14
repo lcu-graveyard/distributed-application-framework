@@ -1,21 +1,21 @@
 <div fxLayoutAlign=" start center">
-  <mat-form-field *ngIf="config?.features.filter" class="filter-field mr-3 ml-3">
-    <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  <mat-form-field *ngIf="Config?.features.filter" class="filter-field mr-3 ml-3">
+    <input matInput type="text" (keyup)="ApplyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
 </div>
-<!-- <mat-spinner class="loading-indicator" layout-align="center center" *ngIf="showLoadingSpinner"></mat-spinner> -->
-<mat-progress-bar mode="indeterminate" *ngIf="showLoader"></mat-progress-bar>
-<mat-table [dataSource]="dataSource" matSort *ngIf="config" (matSortChange)="sorting($event)">
-  <ng-container *ngFor="let column of config.columnDefs" matColumnDef="{{ column.colType }}">
+
+<mat-progress-bar mode="indeterminate" *ngIf="ShowLoader"></mat-progress-bar>
+<mat-table [dataSource]="DataSource" matSort *ngIf="Config" (matSortChange)="Sorting($event)">
+  <ng-container *ngFor="let column of Config.columnDefs" matColumnDef="{{ column.colType }}">
     <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sortable">
 
       <!--
         Show select checkbox in the header
       -->
-      <mat-checkbox *ngIf="toggleSelection(config, column)"
-                    (change)="$event ? masterToggle() : null"
-                    [checked]="selection.hasValue() && isAllSelected()"
-                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      <mat-checkbox *ngIf="ToggleSelection(Config, column)"
+                    (change)="$event ? MasterToggle() : null"
+                    [checked]="Selection.hasValue() && IsAllSelected()"
+                    [indeterminate]="Selection.hasValue() && !IsAllSelected()">
       </mat-checkbox>
 
       <!--
@@ -29,10 +29,10 @@
       <!--
         Show select checkbox in the row
       -->
-      <mat-checkbox *ngIf="toggleSelection(config, column)"
+      <mat-checkbox *ngIf="ToggleSelection(Config, column)"
                     (click)="$event.stopPropagation()"
-                    (change)="$event ? selection.toggle(item) : null"
-                    [checked]="selection.isSelected(item)">
+                    (change)="$event ? Selection.toggle(item) : null"
+                    [checked]="Selection.isSelected(item)">
       </mat-checkbox>
 
       <span *ngIf="column.colType !== 'select'">
@@ -50,20 +50,20 @@
     </mat-cell>
   </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-header-row *matHeaderRowDef="DisplayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row;
                        let odd = odd;
                        let even = even;
-                       columns: displayedColumns;"
+                       columns: DisplayedColumns;"
                        [ngClass]= "{ 'gray': even, 'light-gray': odd }"
-                       (click)="selection.toggle(row)"></mat-row>
+                       (click)="Selection.toggle(row)"></mat-row>
 
 </mat-table>
 <mat-paginator
   #paginator
-  *ngIf="config?.features.paginator"
-  [pageSize]="config?.features.paginator.pageSize"
-  [pageSizeOptions]="config?.features.paginator.pageSizeOptions"
+  *ngIf="Config?.features.paginator"
+  [pageSize]="Config?.features.paginator.pageSize"
+  [pageSizeOptions]="Config?.features.paginator.pageSizeOptions"
   showFirstLastButtons>
 </mat-paginator>
 
