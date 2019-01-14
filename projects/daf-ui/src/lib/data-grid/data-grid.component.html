@@ -8,9 +8,6 @@
   <ng-container *ngFor="let column of config.columnDefs" matColumnDef="{{ column.colType }}">
     <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sortable">
 
-      <!--
-        Show select checkbox in the header
-      -->
       <mat-checkbox *ngIf="toggleSelection(config, column)"
                     (change)="$event ? masterToggle() : null"
                     [checked]="selection.hasValue() && isAllSelected()"
