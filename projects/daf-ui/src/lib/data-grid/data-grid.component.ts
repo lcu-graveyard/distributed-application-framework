@@ -27,7 +27,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
   private _config: DataGridConfig;
 
   @Input()
-  set Config(val: DataGridConfig) {
+  set config(val: DataGridConfig) {
     if (!val) {
       return;
     }
@@ -35,7 +35,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
     this._config = val;
     this.setData();
   }
-  get Config(): DataGridConfig {
+  get config(): DataGridConfig {
 
     if (!this._config) {
       return;
@@ -46,7 +46,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
   /**
    * Material Sorter
    */
-  @ViewChild(MatSort) Sort: MatSort;
+  @ViewChild(MatSort) sort: MatSort;
 
 
   /**
@@ -57,28 +57,28 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
   /**
    * Columns to display
    */
-  public DisplayedColumns: Array<string> = [];
+  public displayedColumns: Array<string> = [];
 
   /**
    * Grid data source
    */
-  public DataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
+  public dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
 
   /**
    * Maintain the selected state
    */
-  public Selection: SelectionModel<any> = new SelectionModel(true, []);
+  public selection: SelectionModel<any> = new SelectionModel(true, []);
 
   /**
    * Toggle loading indicator
    */
-  public ShowLoader: boolean = false;
+  public showLoader: boolean = false;
 
   constructor(private cdref: ChangeDetectorRef) { }
 
   ngAfterViewInit() {
-    this.Sorting();
-    this.Pagination();
+    this.sorting();
+    this.pagination();
   }
 
   /**
@@ -92,18 +92,18 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * Set grid data
    */
   private setData(): void {
-    if (!this.Config || !this.Config.columnDefs) {
+    if (!this.config || !this.config.columnDefs) {
       return;
     }
 
     this.createDisplayedColumns();
 
-      if (this.Config.service) {
+      if (this.config.service) {
         this.showLoaderIndicator(true);
         // service is passed in from parent component using the grid
-       this.Config.service
+       this.config.service
         .subscribe((res) => {
-          this.DataSource.data = res;
+          this.dataSource.data = res;
         }, (err) => {
           console.error('data-grid.component.ts - setData error', err);
         }, () => {
@@ -117,11 +117,11 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * Return array of columns to display
    */
   private createDisplayedColumns(): void {
-    if (!this.Config || !this.Config.columnDefs) {
+    if (!this.config || !this.config.columnDefs) {
       return;
     }
 
-    this.DisplayedColumns = this.Config.columnDefs.map(itm => {
+    this.displayedColumns = this.config.columnDefs.map(itm => {
       return itm.colType;
     });
   }
@@ -129,32 +129,32 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
   /**
    * When sorting is set in columnDef
    */
-  public Sorting(evt?: Event): void {
-    this.DataSource.sort = this.Sort;
+  public sorting(evt?: Event): void {
+    this.dataSource.sort = this.sort;
   }
 
   /**
    * Toggle pagination
    * Pagination properties
    */
-  public Pagination(): void {
-    if (!this.Config || !this.Config.features.paginator) {
+  public pagination(): void {
+    if (!this.config || !this.config.features.paginator) {
       return;
     }
 
-    this.DataSource.paginator =  this.paginator;
+    this.dataSource.paginator =  this.paginator;
   }
 
   /**
    * When filtering is enabled, run the filter
    * @param filterValue term to fitler on
    */
-  public ApplyFilter(filterValue: string): void {
-    if (!this.Config.features.filter) {
+  public applyFilter(filterValue: string): void {
+    if (!this.config.features.filter) {
       return;
     }
 
-    this.DataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   /**
@@ -162,23 +162,23 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * @param config grid conifguration object
    * @param col grid column
    */
-  public ToggleSelection(config: DataGridConfig, col: ColumnConfigModel): boolean {
+  public toggleSelection(config: DataGridConfig, col: ColumnConfigModel): boolean {
     return col.colType === 'select';
   }
 /**
  * Check to see if all rows are selected
  */
-  public IsAllSelected(): boolean {
-    const numSelected = this.Selection.selected.length;
-    const numRows = this.DataSource.data.length;
+  public isAllSelected(): boolean {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
   /**
    * Select all rows with the master toggle checkbox
    */
-  public MasterToggle(): void {
-    this.IsAllSelected() ? this.Selection.clear() : this.DataSource.data.forEach(row => this.Selection.select(row));
+  public masterToggle(): void {
+    this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
   /**
@@ -187,10 +187,10 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    */
   private showLoaderIndicator(val: boolean): void {
 
-    if (!this.Config.features.showLoader) {
+    if (!this.config.features.showLoader) {
       return;
     }
 
-    this.ShowLoader = val;
+    this.showLoader = val;
   }
 }
