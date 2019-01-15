@@ -2,6 +2,7 @@ export * from './svc/apps.service';
 export * from './svc/data-mapper.service';
 export * from './svc/database.service';
 export * from './svc/json-schema.service';
+export * from './svc/login-provider.service';
 export * from './svc/org-identity.service';
 export * from './svc/org.service';
 export * from './svc/page-ui.service';

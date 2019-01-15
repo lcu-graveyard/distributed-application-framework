@@ -10,4 +10,5 @@ export * from './contexts/pages-setup.context';
 export * from './contexts/pointers-config.context';
 export * from './contexts/provisioning-config.context';
 export * from './contexts/reporting-config.context';
+export * from './contexts/login-provider-config.context';
 export * from './contexts/solutions-setup.context';
