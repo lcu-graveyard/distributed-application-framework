@@ -40,7 +40,7 @@
 
         <!--Toggle data value on and off-->
         <!--column.pipe value comes from columnDefinition-->
-        <span *ngIf="column.showValue">{{ column.value | dataGridPipes: column.pipe }}</span>
+        <span>{{ column.value | dataGridPipes: column.pipe }}</span>
       </span>
 
     </mat-cell>
