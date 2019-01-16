@@ -29,7 +29,7 @@
 		"@angular/router": "^7.1.4",
 		"@beyerleinf/ngx-dnd": "6.0.0-preview3",
 		"@lcu/api": "^0.1.9-integration",
-		"@lcu/apps": "0.0.25",
+		"@lcu/apps": "0.0.26",
 		"@lcu/common": "^0.1.9-integration",
 		"@lcu/core": "^0.1.9-integration",
 		"@lcu/elements": "^0.1.9-integration",

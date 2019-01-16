@@ -24,10 +24,7 @@ export class LoginProviderConfigContext extends BaseConfigContext<LoginProviderC
 
 	protected loadDefaultConfig(): LoginProviderConfig {
         return {
-            FacebookConfig: {
-                AppId: "",
-                AppSecret: "",
-            }          
+            FacebookConfigs: {}          
         };
 	}
 }
