@@ -20,6 +20,9 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
 
   /**
    * DataGrid configuration properties
+   * @param columdDefs Definitions for column properties
+   * @param service Service to call for data
+   * @param features Pagination / Filtering and other configurables
    */
   private _config: DataGridConfig;
 
@@ -69,7 +72,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
   /**
    * Toggle loading indicator
    */
-  public showLoadingSpinner: boolean = false;
+  public showLoader: boolean = false;
 
   constructor(private cdref: ChangeDetectorRef) { }
 
@@ -96,15 +99,15 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
     this.createDisplayedColumns();
 
       if (this.config.service) {
-        this.toggleLoadingSpinner(true);
+        this.showLoaderIndicator(true);
         // service is passed in from parent component using the grid
        this.config.service
         .subscribe((res) => {
           this.dataSource.data = res;
         }, (err) => {
-          console.error('DataGrid Component - setData error', err);
+          console.error('data-grid.component.ts - setData error', err);
         }, () => {
-          this.toggleLoadingSpinner(false);
+          this.showLoaderIndicator(false);
         }
       );
     }
@@ -182,7 +185,12 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    *
    * @param val property to toggle loading indicator
    */
-  private toggleLoadingSpinner(val: boolean): void {
-    this.showLoadingSpinner = val;
+  private showLoaderIndicator(val: boolean): void {
+
+    if (!this.config.features.showLoader) {
+      return;
+    }
+
+    this.showLoader = val;
   }
 }

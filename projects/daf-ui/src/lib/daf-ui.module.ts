@@ -8,6 +8,7 @@ import { DisplayComponentModule } from './display-component/display-component.mo
 import { GenericDomainModule } from './generic-domain/generic-domain.module';
 import { PageElementModule } from './page-element/page-element.module';
 import { SolutionsModule } from './solutions/solutions.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const modules = [
   CommonModule,
@@ -18,7 +19,8 @@ const modules = [
 	DisplayComponentModule,
 	GenericDomainModule,
 	PageElementModule,
-  SolutionsModule
+  SolutionsModule,
+  FlexLayoutModule
 ];
 
 @NgModule({
@@ -28,7 +30,7 @@ const modules = [
 	declarations: [
 	],
 	exports: [
-		...modules,
+		...modules
 	]
 })
 export class DAFUIModule { }
