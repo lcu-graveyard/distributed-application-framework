@@ -26,7 +26,7 @@ export class DBConfigContext extends BaseConfigContext<DatabaseConfiguration> {
 	//	API Methods
 	public Load(): Observable<Status> {
 		return new Observable(obs => {
-			this.loading.next(true);
+			this.loading(true);
 
 			this.error.next(null);
 
@@ -52,7 +52,7 @@ export class DBConfigContext extends BaseConfigContext<DatabaseConfiguration> {
 					obs.next(<Status>{ Code: 1, Message: err });
 				},
 				() => {
-					this.loading.next(false);
+					this.loading(false);
 
 					obs.complete();
 				});
@@ -61,7 +61,7 @@ export class DBConfigContext extends BaseConfigContext<DatabaseConfiguration> {
 
 	public Save(config: DatabaseConfiguration): Observable<Status> {
 		return new Observable(obs => {
-			this.loading.next(true);
+			this.loading(true);
 
 			this.error.next(null);
 
@@ -72,7 +72,7 @@ export class DBConfigContext extends BaseConfigContext<DatabaseConfiguration> {
 					} else {
 						this.error.next(result.Status);
 
-						this.loading.next(false);
+						this.loading(false);
 					}
 
 					obs.next(result.Status);
@@ -80,7 +80,7 @@ export class DBConfigContext extends BaseConfigContext<DatabaseConfiguration> {
 				(err) => {
 					this.error.next(err);
 
-					this.loading.next(false);
+					this.loading(false);
 
 					obs.next(<Status>{ Code: 1, Message: err });
 				},

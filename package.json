@@ -33,7 +33,7 @@
 		"@lcu/common": "^0.1.12",
 		"@lcu/core": "^0.1.12",
 		"@lcu/elements": "^0.1.12",
-		"@lcu/enterprises": "0.0.25",
+		"@lcu/enterprises": "0.0.26",
 		"@lcu/hosting": "^0.1.12",
 		"@lcu/routing": "^0.1.12",
 		"@lcu/solutions": "^0.1.12",

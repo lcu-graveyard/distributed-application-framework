@@ -11,7 +11,6 @@ import { isResultSuccess } from '@lcu/core';
 })
 export class ProvisioningConfigContext extends ObservableContextService<ProvisioningConfig> {
 	//	Fields
-	protected loading: BehaviorSubject<boolean>;
 
 	//	Properties
 	public Loading: Observable<boolean>;
@@ -20,17 +19,13 @@ export class ProvisioningConfigContext extends ObservableContextService<Provisio
 	constructor(protected provSvc: ProvisioningService) {
 		super();
 
-		this.loading = new BehaviorSubject(false);
-
-		this.Loading = this.loading.asObservable();
-
 		this.load();
 	}
 
 	//	API Methods
 	public Load(): Observable<Status> {
 		return new Observable(obs => {
-			this.loading.next(true);
+			this.loading(true);
 
 			this.provSvc.Get().subscribe(
 				(result) => {
@@ -50,7 +45,7 @@ export class ProvisioningConfigContext extends ObservableContextService<Provisio
 					obs.next(<Status>{ Code: 1, Message: err });
 				},
 				() => {
-					this.loading.next(false);
+					this.loading(false);
 
 					obs.complete();
 				});
@@ -59,7 +54,7 @@ export class ProvisioningConfigContext extends ObservableContextService<Provisio
 
 	public Save(config: ProvisioningConfig): Observable<Status> {
 		return new Observable(obs => {
-			this.loading.next(true);
+			this.loading(true);
 
 			this.provSvc.Save(config).subscribe(
 				(result) => {
@@ -73,7 +68,7 @@ export class ProvisioningConfigContext extends ObservableContextService<Provisio
 					obs.next(<Status>{ Code: 1, Message: err });
 				},
 				() => {
-					this.loading.next(false);
+					this.loading(false);
 
 					obs.complete();
 				});

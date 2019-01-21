@@ -12,7 +12,6 @@ export const DEVICES_CONFIG_TYPE: string = 'ForgeDevicesConfig';
 })
 export class DevicesConfigContext extends ObservableContextService<DevicesConfig> {
 	//	Fields
-	protected loading: BehaviorSubject<boolean>;
 
 	//	Properties
 	public Config: DevicesConfig;
@@ -23,16 +22,12 @@ export class DevicesConfigContext extends ObservableContextService<DevicesConfig
 	constructor(protected singletonSvc: SingletonService) {
 		super();
 
-		this.loading = new BehaviorSubject(false);
-
-		this.Loading = this.loading.asObservable();
-
 		this.Load();
 	}
 
 	//	API Methods
 	public Load() {
-		this.loading.next(true);
+		this.loading(true);
 
 		this.singletonSvc.Get(DEVICES_CONFIG_TYPE).subscribe(
 			(result) => {
@@ -50,12 +45,12 @@ export class DevicesConfigContext extends ObservableContextService<DevicesConfig
 			},
 			(err) => this.subject.error(err),
 			() => {
-				this.loading.next(false);
+				this.loading(false);
 			});
 	}
 
 	public Save(config: DevicesConfig) {
-		this.loading.next(true);
+		this.loading(true);
 
 		this.singletonSvc.Save(DEVICES_CONFIG_TYPE, config).subscribe(
 			(result) => {
@@ -64,13 +59,13 @@ export class DevicesConfigContext extends ObservableContextService<DevicesConfig
 				} else {
 					this.subject.error(result.Status);
 
-					this.loading.next(false);
+					this.loading(false);
 				}
 			},
 			(err) => {
 				this.subject.error(err);
 
-				this.loading.next(false);
+				this.loading(false);
 			});
 	}
 
