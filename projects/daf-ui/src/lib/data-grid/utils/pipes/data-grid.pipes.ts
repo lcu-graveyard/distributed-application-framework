@@ -60,6 +60,15 @@ export class DataGridPipes implements PipeTransform {
     }
 
     /**
+     * Return percentage as decimal
+     */
+    if (args.toLowerCase() === PipeConstants.PIPE_PERCENTAGE_DECIMAL) {
+      const pipe = new PercentPipe('en-US');
+      const transformed = pipe.transform(value, '2.2-2');
+      return transformed;
+    }
+
+    /**
      * Return temperature in fahrenheit, append °F
      */
     if (args.toLowerCase() === PipeConstants.PIPE_TEMP_FAHRENHEIT) {

@@ -6,6 +6,7 @@ export class PipeConstants {
   static readonly PIPE_EPOCH = 'epoch';
   static readonly PIPE_NUMBER = 'number';
   static readonly PIPE_PERCENTAGE = 'percentage';
+  static readonly PIPE_PERCENTAGE_DECIMAL = 'percentagedecimal'
   static readonly PIPE_TEMP_FAHRENHEIT = 'fahrenheit';
   static readonly PIPE_TEMP_CELSIUS = 'celsius';
   static readonly PIPE_MPH = 'mph';
