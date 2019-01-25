@@ -22,6 +22,10 @@ export class ForgeOrganizationIdentityService extends DAFService {
 		return this.delete(`${this.rootUrl}/users/${username}/claims/${encodeURIComponent(claimType)}`);
 	}
 
+	public DeleteProvider(type: string): Observable<BaseResponse> {
+		return this.delete(`${this.rootUrl}/providers/${type}`);
+	}
+
 	public ListAccessConfigs(page: number, pageSize: number): Observable<BaseModeledResponse<Pageable<AccessConfigModel>>> {
 		return this.get(`${this.rootUrl}/access-configs/list/${page}/${pageSize}`);
 	}
@@ -40,5 +44,18 @@ export class ForgeOrganizationIdentityService extends DAFService {
 
 	public SaveClaims(username: string, claims: ClaimModel[]): Observable<BaseResponse> {
 		return this.post(claims, `${this.rootUrl}/users/${username}/claims`);
+	}
+
+	public SaveProvider(name: string, desc: string, type: string, metadata: any): Observable<BaseResponse> {
+		var model = {
+			Name: name,
+			Description: desc,
+			Type: type,
+			...metadata
+		};
+
+		// model = Object.assign(model, metadata);
+
+		return this.post(model, `${this.rootUrl}/providers`);
 	}
 }

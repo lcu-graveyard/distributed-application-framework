@@ -17,7 +17,7 @@ export class ProvisioningConfigContext extends ObservableContextService<Provisio
 	public Loading: Observable<boolean>;
 
 	//	Constructors
-	constructor(protected provSvc: ProvisioningService) {
+	constructor(protected provSvc: ProvisioningService) { 
 		super();
 
 		this.loading = new BehaviorSubject(false);
