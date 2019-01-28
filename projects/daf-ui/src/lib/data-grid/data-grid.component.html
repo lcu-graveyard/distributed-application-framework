@@ -39,7 +39,6 @@
       <span *ngIf="column.colType !== 'select'" fxLayoutAlign="center center">
 
         <!--Toggle icons on and off-->
-        <!-- <i *ngIf="column.showIcon" style="font-size: 30px;" class="mr-2" [ngClass]="column.icon"></i> -->
         <i *ngIf="column.showIcon" style="font-size: 30px;" [ngClass]="column.setIcon(item)"></i>
 
         <!--Toggle data value on and off-->
