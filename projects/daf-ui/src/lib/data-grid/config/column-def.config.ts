@@ -41,7 +41,7 @@ export class ColumnDefinition {
   }
 
   /**
-   * Set values and toggle icons or data values on / off
+   * Toggle icons or data values on / off
    * @param colObj Each item coming from the grid rows
    */
   public setIcon<T>(colObj: T): void {
