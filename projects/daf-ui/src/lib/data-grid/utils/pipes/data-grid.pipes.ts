@@ -7,6 +7,9 @@ import { PipeConstants } from '../constants/pipe.constants';
   name: 'dataGridPipes'
 })
 
+/**
+ * Pipes for datagrid values
+ */
 export class DataGridPipes implements PipeTransform {
   transform(value: any, args?: any): any {
 
