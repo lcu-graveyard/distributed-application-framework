@@ -41,7 +41,7 @@
         <!--Toggle icons on and off-->
         <i *ngIf="column.showIcon" style="font-size: 30px;" [ngClass]="column.setIcon(item)"></i>
 
-        <!--Toggle data value on and off-->
+        <!--Toggle data value on and off and set pipes, if available-->
         <!--column.pipe value comes from columnDefinition-->
         <span *ngIf="column.showValue">{{ item[column.colType] | dataGridPipes: column.pipe }}</span>
       </span>
