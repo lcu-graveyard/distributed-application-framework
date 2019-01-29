@@ -39,7 +39,7 @@
       <span *ngIf="column.ColType !== 'select'" fxLayoutAlign="center center">
 
         <!--Toggle icons on and off-->
-        <i *ngIf="column.ShowIcon" style="font-size: 30px;" [ngClass]="column.SetIcon(item)"></i>
+        <i *ngIf="column.ShowIcon" class="dg-icons" [ngClass]="column.SetIcon(item)"></i>
 
         <!--Toggle data value on and off and set pipes, if available-->
         <!--column.pipe value comes from columnDefinition-->

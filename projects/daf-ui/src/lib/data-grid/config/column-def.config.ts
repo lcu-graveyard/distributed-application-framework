@@ -11,14 +11,13 @@ export class ColumnDefinition {
 
 /**
  * Constructor for Grid column definitions
- * @param colType Column data type
- * @param title Column title
- * @param value Function that passes in the column object and then returns the value, based of def
- * @param showValue Boolean for toggling icons
- * @param showIcon Boolean for toggling icons
- * @param sortable Allow column to be sorted
- * @param pipe String value of pipe to use
- * @param iconConfigFunc Callback function for setting icons
+ * @param ColType Column data type
+ * @param Title Column title
+ * @param ShowValue Boolean for toggling icons
+ * @param ShowIcon Boolean for toggling icons
+ * @param Sortable Allow column to be sorted
+ * @param Pipe String value of pipe to use
+ * @param IconConfigFunc Callback function for setting icons
  */
 
   constructor(colType: string,
