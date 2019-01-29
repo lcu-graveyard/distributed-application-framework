@@ -1,13 +1,17 @@
-<div fxLayoutAlign=" start center">
-  <mat-form-field *ngIf="config?.features.filter" class="filter-field mr-3 ml-3">
+
+<div fxLayoutAlign=" start">
+  <mat-form-field *ngIf="config?.features?.filter" class="filter-field">
     <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
 </div>
-<mat-progress-bar mode="indeterminate" *ngIf="showLoader"></mat-progress-bar>
+<mat-spinner class="loading-indicator" layout-align="center center" *ngIf="showLoader"></mat-spinner>
 <mat-table [dataSource]="dataSource" matSort *ngIf="config" (matSortChange)="sorting($event)">
   <ng-container *ngFor="let column of config.columnDefs" matColumnDef="{{ column.colType }}">
     <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sortable">
 
+      <!--
+        Show select checkbox in the header
+      -->
       <mat-checkbox *ngIf="toggleSelection(config, column)"
                     (change)="$event ? masterToggle() : null"
                     [checked]="selection.hasValue() && isAllSelected()"
@@ -22,6 +26,7 @@
     </mat-header-cell>
 
     <mat-cell *matCellDef="let item">
+        <!-- {{ column.setValue(item) }} -->
       <!--
         Show select checkbox in the row
       -->
@@ -31,16 +36,14 @@
                     [checked]="selection.isSelected(item)">
       </mat-checkbox>
 
-      <span *ngIf="column.colType !== 'select'">
-        <!--Set data values for each row-->
-        {{ column.setValue(item) }}
+      <span *ngIf="column.colType !== 'select'" fxLayoutAlign="center center">
 
         <!--Toggle icons on and off-->
-        <i *ngIf="column.showIcon" style="font-size: 30px;" class="mr-2" [ngClass]="column.icon"></i>
+        <i *ngIf="column.showIcon" style="font-size: 30px;" [ngClass]="column.setIcon(item)"></i>
 
         <!--Toggle data value on and off-->
         <!--column.pipe value comes from columnDefinition-->
-        <span *ngIf="column.showValue">{{ column.value | dataGridPipes: column.pipe }}</span>
+        <span *ngIf="column.showValue">{{ item[column.colType] | dataGridPipes: column.pipe }}</span>
       </span>
 
     </mat-cell>
@@ -57,9 +60,9 @@
 </mat-table>
 <mat-paginator
   #paginator
-  *ngIf="config?.features.paginator"
-  [pageSize]="config?.features.paginator.pageSize"
-  [pageSizeOptions]="config?.features.paginator.pageSizeOptions"
+  *ngIf="config?.features?.paginator"
+  [pageSize]="config?.features?.paginator.pageSize"
+  [pageSizeOptions]="config?.features?.paginator.pageSizeOptions"
   showFirstLastButtons>
 </mat-paginator>
 
