@@ -1,26 +1,23 @@
 import { ColumnConfigModel } from '../models/column-config.model';
 
 export class ColumnDefinition {
-  public colType: string;
-  public icon: string;
-  public iconConfigFunc?: Function;
-  public pipe?: string;
-  public title: string;
-  public showIcon: boolean;
-  public showValue: boolean;
-  public sortable?: boolean;
-  public value: string;
+  public ColType: string;
+  public IconConfigFunc?: Function;
+  public Pipe?: string;
+  public Title: string;
+  public ShowIcon: boolean;
+  public ShowValue: boolean;
+  public Sortable?: boolean;
 
 /**
  * Constructor for Grid column definitions
- * @param colType Column data type
- * @param title Column title
- * @param value Function that passes in the column object and then returns the value, based of def
- * @param showValue Boolean for toggling icons
- * @param showIcon Boolean for toggling icons
- * @param sortable Allow column to be sorted
- * @param pipe String value of pipe to use
- * @param iconConfigFunc Callback function for setting icons
+ * @param ColType Column data type
+ * @param Title Column title
+ * @param ShowValue Boolean for toggling icons
+ * @param ShowIcon Boolean for toggling icons
+ * @param Sortable Allow column to be sorted
+ * @param Pipe String value of pipe to use
+ * @param IconConfigFunc Callback function for setting icons
  */
 
   constructor(colType: string,
@@ -31,23 +28,23 @@ export class ColumnDefinition {
               pipe?: string,
               iconConfigFunc?: Function) {
 
-    this.colType = colType;
-    this.title = title;
-    this.showValue = showValue;
-    this.showIcon = showIcon;
-    this.sortable = sortable;
-    this.pipe = pipe;
-    this.iconConfigFunc = iconConfigFunc;
+    this.ColType = colType;
+    this.Title = title;
+    this.ShowValue = showValue;
+    this.ShowIcon = showIcon;
+    this.Sortable = sortable;
+    this.Pipe = pipe;
+    this.IconConfigFunc = iconConfigFunc;
   }
 
   /**
    * Toggle icons or data values on / off
    * @param colObj Each item coming from the grid rows
    */
-  public setIcon<T>(colObj: T): void {
+  public SetIcon<T>(colObj: T): void {
 
-    if (this.showIcon && this.iconConfigFunc) {
-     return this.iconConfigFunc(colObj, this.colType);
+    if (this.ShowIcon && this.IconConfigFunc) {
+     return this.IconConfigFunc(colObj, this.ColType);
     }
   }
 }
