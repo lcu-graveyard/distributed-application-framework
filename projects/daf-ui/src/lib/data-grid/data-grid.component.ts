@@ -122,7 +122,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
     }
 
     this.displayedColumns = this.config.columnDefs.map(itm => {
-      return itm.colType;
+      return itm.ColType;
     });
   }
 

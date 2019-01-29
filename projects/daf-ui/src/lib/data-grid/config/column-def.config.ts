@@ -1,15 +1,13 @@
 import { ColumnConfigModel } from '../models/column-config.model';
 
 export class ColumnDefinition {
-  public colType: string;
-  public icon: string;
-  public iconConfigFunc?: Function;
-  public pipe?: string;
-  public title: string;
-  public showIcon: boolean;
-  public showValue: boolean;
-  public sortable?: boolean;
-  public value: string;
+  public ColType: string;
+  public IconConfigFunc?: Function;
+  public Pipe?: string;
+  public Title: string;
+  public ShowIcon: boolean;
+  public ShowValue: boolean;
+  public Sortable?: boolean;
 
 /**
  * Constructor for Grid column definitions
@@ -31,23 +29,23 @@ export class ColumnDefinition {
               pipe?: string,
               iconConfigFunc?: Function) {
 
-    this.colType = colType;
-    this.title = title;
-    this.showValue = showValue;
-    this.showIcon = showIcon;
-    this.sortable = sortable;
-    this.pipe = pipe;
-    this.iconConfigFunc = iconConfigFunc;
+    this.ColType = colType;
+    this.Title = title;
+    this.ShowValue = showValue;
+    this.ShowIcon = showIcon;
+    this.Sortable = sortable;
+    this.Pipe = pipe;
+    this.IconConfigFunc = iconConfigFunc;
   }
 
   /**
    * Toggle icons or data values on / off
    * @param colObj Each item coming from the grid rows
    */
-  public setIcon<T>(colObj: T): void {
+  public SetIcon<T>(colObj: T): void {
 
-    if (this.showIcon && this.iconConfigFunc) {
-     return this.iconConfigFunc(colObj, this.colType);
+    if (this.ShowIcon && this.IconConfigFunc) {
+     return this.IconConfigFunc(colObj, this.ColType);
     }
   }
 }
