@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/internal/Observable';
 
 
 export class DataGridConfigModel {
-  public columnDefs: Array<ColumnDefinition>;
-  public filter?: boolean;
-  public paginator?: DataGridPagination;
-  public service?: Observable<any[]>;
+  public ColumnDefs: Array<ColumnDefinition>;
+  public Filter?: boolean;
+  public Paginator?: DataGridPagination;
+  public Service?: Observable<any[]>;
 }
