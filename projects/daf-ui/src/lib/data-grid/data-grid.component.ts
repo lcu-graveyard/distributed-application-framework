@@ -164,7 +164,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * @param col grid column
    */
   public ToggleSelection(config: DataGridConfig, col: ColumnConfigModel): boolean {
-    return col.colType === 'select';
+    return col.ColType === 'select';
   }
 /**
  * Check to see if all rows are selected

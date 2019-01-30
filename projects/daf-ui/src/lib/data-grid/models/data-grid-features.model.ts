@@ -1,5 +1,6 @@
 import { PaginationConfig } from '../config/pagination.config';
 
+/**Datagrid Features */
 export class DataGridFeaturesModel {
     public Paginator: PaginationConfig;
     public RowSelectable: boolean = false;
