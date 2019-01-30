@@ -1,3 +1,4 @@
+/**Pagination Features */
 export class PaginationConfig {
     public PageSize: number;
     public PageSizeOptions: Array<number>;
