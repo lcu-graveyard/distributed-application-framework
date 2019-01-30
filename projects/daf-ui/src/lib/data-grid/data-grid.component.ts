@@ -9,6 +9,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 
 import { DataGridConfig } from './config/data-grid.config';
 import { ColumnConfigModel } from './models/column-config.model';
+import { throwError } from 'rxjs';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
   private _config: DataGridConfig;
 
   @Input()
-  set config(val: DataGridConfig) {
+  set Config(val: DataGridConfig) {
     if (!val) {
       return;
     }
@@ -35,7 +36,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
     this._config = val;
     this.setData();
   }
-  get config(): DataGridConfig {
+  get Config(): DataGridConfig {
 
     if (!this._config) {
       return;
@@ -72,7 +73,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
   /**
    * Toggle loading indicator
    */
-  public showLoader: boolean = false;
+  public ShowLoader: boolean = false;
 
   constructor(private cdref: ChangeDetectorRef) { }
 
@@ -92,20 +93,20 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * Set grid data
    */
   private setData(): void {
-    if (!this.config || !this.config.columnDefs) {
+    if (!this.Config || !this.Config.ColumnDefs) {
       return;
     }
 
     this.createDisplayedColumns();
 
-      if (this.config.service) {
+      if (this.Config.Service) {
         this.showLoaderIndicator(true);
         // service is passed in from parent component using the grid
-       this.config.service
+       this.Config.Service
         .subscribe((res) => {
           this.dataSource.data = res;
         }, (err) => {
-          console.error('data-grid.component.ts - setData error', err);
+          return throwError(err);
         }, () => {
           this.showLoaderIndicator(false);
         }
@@ -117,11 +118,11 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * Return array of columns to display
    */
   private createDisplayedColumns(): void {
-    if (!this.config || !this.config.columnDefs) {
+    if (!this.Config || !this.Config.ColumnDefs) {
       return;
     }
 
-    this.displayedColumns = this.config.columnDefs.map(itm => {
+    this.displayedColumns = this.Config.ColumnDefs.map(itm => {
       return itm.ColType;
     });
   }
@@ -138,7 +139,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * Pagination properties
    */
   public pagination(): void {
-    if (!this.config || !this.config.features.paginator) {
+    if (!this.Config || !this.Config.Features.Paginator) {
       return;
     }
 
@@ -150,7 +151,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * @param filterValue term to fitler on
    */
   public applyFilter(filterValue: string): void {
-    if (!this.config.features.filter) {
+    if (!this.Config.Features.Filter) {
       return;
     }
 
@@ -162,7 +163,7 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    * @param config grid conifguration object
    * @param col grid column
    */
-  public toggleSelection(config: DataGridConfig, col: ColumnConfigModel): boolean {
+  public ToggleSelection(config: DataGridConfig, col: ColumnConfigModel): boolean {
     return col.colType === 'select';
   }
 /**
@@ -187,10 +188,10 @@ export class DataGridComponent implements AfterViewInit, AfterContentChecked {
    */
   private showLoaderIndicator(val: boolean): void {
 
-    if (!this.config.features.showLoader) {
+    if (!this.Config.Features.ShowLoader) {
       return;
     }
 
-    this.showLoader = val;
+    this.ShowLoader = val;
   }
 }
