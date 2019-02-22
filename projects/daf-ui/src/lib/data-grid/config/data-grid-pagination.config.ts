@@ -1,4 +1,5 @@
+/**Pagination Features */
 export class DataGridPagination {
-  public pageSize: number;
-  public pageSizeOptions: Array<number>;
+  public PageSize: number;
+  public PageSizeOptions: Array<number>;
  }

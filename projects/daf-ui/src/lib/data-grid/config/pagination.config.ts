@@ -1,9 +1,10 @@
+/**Pagination Features */
 export class PaginationConfig {
-    public pageSize: number;
-    public pageSizeOptions: Array<number>;
+    public PageSize: number;
+    public PageSizeOptions: Array<number>;
 
     constructor(pageSize: number, pageSizeOptions: Array<number>) {
-     this.pageSize = pageSize;
-     this.pageSizeOptions = pageSizeOptions;
+     this.PageSize = pageSize;
+     this.PageSizeOptions = pageSizeOptions;
     }
    }

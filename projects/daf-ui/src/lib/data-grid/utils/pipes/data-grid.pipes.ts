@@ -7,6 +7,9 @@ import { PipeConstants } from '../constants/pipe.constants';
   name: 'dataGridPipes'
 })
 
+/**
+ * Pipes for datagrid values
+ */
 export class DataGridPipes implements PipeTransform {
   transform(value: any, args?: any): any {
 
@@ -37,7 +40,7 @@ export class DataGridPipes implements PipeTransform {
      */
     if (args.toLowerCase() === PipeConstants.PIPE_NUMBER) {
       const pipe = new DecimalPipe('en-US');
-      const transformed = pipe.transform(value, '1.2-2');
+      const transformed = pipe.transform(value, '1.0-0');
       return transformed;
     }
 
@@ -46,7 +49,7 @@ export class DataGridPipes implements PipeTransform {
      */
     if (args.toLowerCase() === PipeConstants.PIPE_MPH) {
       const pipe = new DecimalPipe('en-US');
-      const transformed = pipe.transform(value, '1.2-2');
+      const transformed = pipe.transform(value, '1.0-0');
       return transformed + ' mph';
     }
 
@@ -60,12 +63,30 @@ export class DataGridPipes implements PipeTransform {
     }
 
     /**
+     * Return percentage
+     */
+    if (args.toLowerCase() === PipeConstants.PIPE_PERCENTAGE_DECIMAL) {
+      const pipe = new PercentPipe('en-US');
+      const transformed = pipe.transform(value, '2.2-2');
+      return transformed;
+    }
+
+    /**
+     * Return percentage
+     */
+    if (args.toLowerCase() === PipeConstants.PIPE_DECIMAL_FOUR) {
+      const pipe = new DecimalPipe('en-US');
+      const transformed = pipe.transform(value, '1.4-4');
+      return transformed;
+    }
+
+    /**
      * Return temperature in fahrenheit, append °F
      */
     if (args.toLowerCase() === PipeConstants.PIPE_TEMP_FAHRENHEIT) {
       const pipe = new DecimalPipe('en-US');
      // const temperature = (value * 32) + 1.8;
-      const transformed = pipe.transform(value, '1.2-2');
+      const transformed = pipe.transform(value, '1.0-0');
 
       return transformed + ' °F';
     }
@@ -76,7 +97,7 @@ export class DataGridPipes implements PipeTransform {
     if (args.toLowerCase() === PipeConstants.PIPE_TEMP_CELSIUS) {
       const pipe = new DecimalPipe('en-US');
      // const tempareature = (value - 32) / 1.8 ;
-      const transformed = pipe.transform(value, '1.2-2');
+      const transformed = pipe.transform(value, '1.0-0');
 
       return transformed + ' °C';
     }

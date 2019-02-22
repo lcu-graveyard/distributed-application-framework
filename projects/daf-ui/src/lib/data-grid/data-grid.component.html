@@ -1,17 +1,18 @@
-<div fxLayoutAlign=" start center">
-  <mat-form-field *ngIf="config?.features.filter" class="filter-field mr-3 ml-3">
+
+<div fxLayoutAlign=" start">
+  <mat-form-field *ngIf="Config?.Features?.Filter" class="filter-field">
     <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
 </div>
-<mat-table [dataSource]="dataSource" matSort *ngIf="config" (matSortChange)="sorting($event)">
-  <mat-spinner class="loading-indicator" layout-align="center center" *ngIf="showLoadingSpinner"></mat-spinner>
-  <ng-container *ngFor="let column of config.columnDefs" matColumnDef="{{ column.colType }}">
-    <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.sortable">
+<mat-progress-bar mode="indeterminate" *ngIf="ShowLoader"></mat-progress-bar>
+<mat-table [dataSource]="dataSource" matSort *ngIf="Config" (matSortChange)="sorting($event)">
+  <ng-container *ngFor="let column of Config.ColumnDefs" matColumnDef="{{ column.ColType }}">
+    <mat-header-cell *matHeaderCellDef mat-sort-header [disabled]="!column.Sortable" fxLayoutAlign="center center">
 
       <!--
         Show select checkbox in the header
       -->
-      <mat-checkbox *ngIf="toggleSelection(config, column)"
+      <mat-checkbox *ngIf="ToggleSelection(Config, column)"
                     (change)="$event ? masterToggle() : null"
                     [checked]="selection.hasValue() && isAllSelected()"
                     [indeterminate]="selection.hasValue() && !isAllSelected()">
@@ -20,30 +21,29 @@
       <!--
         Show the header title
       -->
-      {{ column.title }}
+      {{ column.Title }}
 
     </mat-header-cell>
 
-    <mat-cell *matCellDef="let item">
+    <mat-cell *matCellDef="let item" fxLayoutAlign="center center">
+
       <!--
         Show select checkbox in the row
       -->
-      <mat-checkbox *ngIf="toggleSelection(config, column)"
+      <mat-checkbox *ngIf="ToggleSelection(Config, column)"
                     (click)="$event.stopPropagation()"
                     (change)="$event ? selection.toggle(item) : null"
                     [checked]="selection.isSelected(item)">
       </mat-checkbox>
 
-      <span *ngIf="column.colType !== 'select'">
-        <!--Set data values for each row-->
-        {{ column.setValue(item) }}
+      <span *ngIf="column.ColType !== 'select'" fxLayoutAlign="center center">
 
         <!--Toggle icons on and off-->
-        <i *ngIf="column.showIcon" style="font-size: 30px;" class="mr-2" [ngClass]="column.icon"></i>
+        <i *ngIf="column.ShowIcon" class="dg-icons" [ngClass]="column.SetIcon(item)"></i>
 
-        <!--Toggle data value on and off-->
+        <!--Toggle data value on and off and set pipes, if available-->
         <!--column.pipe value comes from columnDefinition-->
-        <span *ngIf="column.showValue">{{ column.value | dataGridPipes: column.pipe }}</span>
+        <span *ngIf="column.ShowValue">{{ item[column.ColType] | dataGridPipes: column.Pipe }}</span>
       </span>
 
     </mat-cell>
@@ -60,9 +60,9 @@
 </mat-table>
 <mat-paginator
   #paginator
-  *ngIf="config?.features.paginator"
-  [pageSize]="config?.features.paginator.pageSize"
-  [pageSizeOptions]="config?.features.paginator.pageSizeOptions"
+  *ngIf="Config?.Features?.Paginator"
+  [pageSize]="Config?.Features?.Paginator.PageSize"
+  [pageSizeOptions]="Config?.Features?.Paginator.PageSizeOptions"
   showFirstLastButtons>
 </mat-paginator>
 

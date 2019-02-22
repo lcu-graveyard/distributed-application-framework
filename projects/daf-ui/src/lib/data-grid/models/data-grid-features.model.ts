@@ -1,9 +1,10 @@
 import { PaginationConfig } from '../config/pagination.config';
 
+/**Datagrid Features */
 export class DataGridFeaturesModel {
-    public paginator: PaginationConfig;
-    public rowSelectable: boolean = false;
-    public filter: boolean = false;
-    public showLoader: boolean = false;
-    public showSelection: boolean = false;
+    public Paginator: PaginationConfig;
+    public RowSelectable: boolean = false;
+    public Filter: boolean = false;
+    public ShowLoader: boolean = false;
+    public ShowSelection: boolean = false;
   }

@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DataGridPipes } from './utils/pipes/data-grid.pipes';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {
   MatFormFieldModule,
   MatTableModule,
   MatSortModule, MatPaginatorModule,
   MatCheckboxModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatProgressBarModule
 } from '@angular/material';
 
 import { DataGridComponent } from './data-grid.component';
@@ -21,7 +23,9 @@ import { DataGridComponent } from './data-grid.component';
     MatSortModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    FlexLayoutModule
   ],
   declarations: [
   DataGridComponent,
@@ -30,7 +34,8 @@ import { DataGridComponent } from './data-grid.component';
   exports: [
   DataGridComponent,
   MatCheckboxModule,
-  DataGridPipes
+  DataGridPipes,
+  FlexLayoutModule
   ]
 })
 export class DataGridModule { }

@@ -1,6 +1,6 @@
 import { Injectable, Inject, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AccessConfigModel, AccessRightModel, ClaimModel, OrganizationIdentityModel } from '@lcu/apps';
+import { AccessConfigModel, AccessRightModel, ClaimModel, OrganizationIdentityModel, ProviderModel } from '@lcu/apps';
 import { DAFService } from '@lcu/api';
 import { BaseResponse, BaseModeledResponse } from '@lcu/core';
 import { Pageable } from '@lcu/common';
@@ -38,7 +38,24 @@ export class ForgeOrganizationIdentityService extends DAFService {
 		return this.get(`${this.rootUrl}/users/list/${page}/${pageSize}`);
 	}
 
+	public GetProvider(providerType: string): Observable<BaseModeledResponse<ProviderModel>> {
+		return this.get(`${this.rootUrl}/providers/${providerType}`);
+	}
+
 	public SaveClaims(username: string, claims: ClaimModel[]): Observable<BaseResponse> {
 		return this.post(claims, `${this.rootUrl}/users/${username}/claims`);
+	}
+
+	public SaveProvider(name: string, desc: string, type: string, metadata: any): Observable<BaseResponse> {
+		var model = {
+			Name: name,
+			Description: desc,
+			Type: type,
+			...metadata
+		};
+
+		// model = Object.assign(model, metadata);
+
+		return this.post(model, `${this.rootUrl}/providers`);
 	}
 }
